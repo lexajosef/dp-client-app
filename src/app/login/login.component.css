@@ -1,0 +1,22 @@
+form {
+  width: 360px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  padding: 40px;
+  margin: 20px;
+}
+form h2 {
+  margin-top: 0px;
+  text-align: center;
+}
+
+.btns-container {
+  margin-top: 20px; 
+  display: flex;
+}
+.btns-container .item {
+  flex-grow: 1;
+}
+.item.right {
+  text-align: right;
+}

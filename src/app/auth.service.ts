@@ -29,6 +29,10 @@ export class AuthService {
     localStorage.removeItem('access_token');
   }
 
+  isUserLoggedIn(): boolean {
+    return localStorage.getItem('access_token') !== null;
+  }
+
   private onLoggedIn(token: string) {
     localStorage.setItem('access_token', token);
   }

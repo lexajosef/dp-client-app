@@ -10,16 +10,9 @@ import { AuthService } from './auth.service';
 export class AppComponent implements OnInit {
   title = 'dp-client-app';
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.authService.login("lexa@gmail.com", "12345")
-      .subscribe(res => {
-        if (res)
-          console.log('Successfully logged!');
-        else
-          console.error('Cannot login user!');
-      }
-    );
+    
   }
 }

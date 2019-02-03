@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles of the application. */
+:root {
+  --main-color-rgb: 98, 0, 238;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, .8);
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Buttons */
+.btn {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  /* text-transform: uppercase; */
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  letter-spacing: 1.2px;
+  vertical-align: middle;
+  outline: 0px;
+  user-select: none;
+}
+.btn.btn-primary {
+  background-color: rgb(var(--main-color-rgb));
+  color: rgb(255, 255, 255);
+}
+.btn.btn-primary:hover {
+  background-color: rgba(var(--main-color-rgb), .9);
+}
+.btn.btn-primary:focus {
+  background-color: rgba(var(--main-color-rgb), .8);
+}
+.btn:hover,
+.btn:active,
+.btn:focus {
+  cursor: pointer;
+}
+.btn.btn-transparent {
+  background-color: transparent;
+  color: rgb(var(--main-color-rgb));
+}
+.btn.btn-transparent:hover {
+  background-color: rgba(var(--main-color-rgb), .05);
+}
+.btn.btn-transparent:focus {
+  background-color: rgba(var(--main-color-rgb), .1);
+}
+a.btn {
+  display: inline-block;
+  line-height: 36px;
+  padding: 0 8px;
+}
+
+/* Forms */
+.form-field label {
+  display: block;
+  color: rgba(0, 0, 0, .8);
+  pointer-events: none;
+}
+.text-field {
+  width: 100%;
+  height: 54px;
+  padding: 12px 16px;
+  margin: 8px 0 16px 0;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  outline: 0px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.text-field:hover {
+  border: 1px solid rgba(0, 0, 0, .4);
+}
+.text-field:focus {
+  border: 1px solid rgb(var(--main-color-rgb));
+  outline: 1px solid rgb(var(--main-color-rgb));
+}
+
+.text-field:focus + label {
+  color: rgb(var(--main-color-rgb));
+}
