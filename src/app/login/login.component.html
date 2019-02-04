@@ -1,21 +1,32 @@
 <div class="flex-container">
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <h2>Přihlášení</h2>
-    <div class="form-field">
-      <label for="email">Email</label>
-      <input type="text" class="text-field" formControlName="email" id="email" placeholder="email@mail.com">
-    </div>
-    <div class="form-field">
-      <label for="password">Heslo</label>
-      <input type="password" class="text-field" formControlName="password" id="password">
-    </div>
-    <div class="btns-container">
-      <div class="item">
-        <a class="btn btn-transparent btn-primary" tabindex="0">Registrovat</a>
+  <div class="login-container" [ngClass]="{ 'loading' : loading }">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="loading">
+      <h2>Přihlášení</h2>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="text-field" formControlName="email" [ngClass]="{ 'error' : errorMsg || (submitted && form.email.errors) }" id="email" placeholder="email@mail.com">
+        <div class="error visible" *ngIf="submitted && form.email.errors">
+          <i class="material-icons">error</i> Neplatný formát e-mailu.
+        </div>
       </div>
-      <div class="item right">
-        <button class="btn btn-primary">Přihlásit</button>
+      <div class="form-group">
+        <label for="password">Heslo</label>
+        <input type="password" class="text-field" formControlName="password" [ngClass]="{ 'error' : errorMsg || (submitted && form.password.errors) }" id="password">
+        <div class="error visible" *ngIf="submitted && form.password.errors">
+          <i class="material-icons">error</i> Heslo musí obsahovat alespoň 5 znaků.
+        </div>
       </div>
-    </div>
-  </form>
+      <div class="login-error" *ngIf="errorMsg">
+        <i class="material-icons">error</i> {{errorMsg}}
+      </div>
+      <div class="btns-container">
+        <div class="item">
+          <a class="btn btn-transparent btn-primary" tabindex="0">Registrovat</a>
+        </div>
+        <div class="item right">
+          <button class="btn btn-primary">Přihlásit</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

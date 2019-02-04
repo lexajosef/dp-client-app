@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { tap, mapTo, catchError } from 'rxjs/operators';
+import { map, mapTo, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +11,18 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<Boolean> {
+  login(email: string, password: string): Observable<any> {
     const body = { email: email, password: password };
 
     return this.http.post('http://localhost:3000/api/auth', body, {responseType: 'text'})
       .pipe(
-        tap(token => this.onLoggedIn(token)),
-        mapTo(true),
-        catchError(err => {
-          this.handleError(err);
-          return of(false);
+        map(resp => {
+          if (resp) {
+            // success, set local storage
+            this.onLoggedIn(resp);
+          }
+
+          return resp; // return for error handling in component
         })
       );
   }
@@ -35,10 +37,6 @@ export class AuthService {
 
   private onLoggedIn(token: string) {
     localStorage.setItem('access_token', token);
-  }
-
-  private handleError(error: Response | any) {
-    console.error(error.message || error);
   }
 
 }

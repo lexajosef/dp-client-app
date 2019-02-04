@@ -1,9 +1,21 @@
-form {
+.login-container {
   width: 360px;
+  position: relative;
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 4px;
   padding: 40px;
   margin: 20px;
+}
+.login-container.loading::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, .6);
 }
 form h2 {
   margin-top: 0px;
@@ -11,7 +23,7 @@ form h2 {
 }
 
 .btns-container {
-  margin-top: 20px; 
+  margin-top: 30px; 
   display: flex;
 }
 .btns-container .item {
@@ -19,4 +31,28 @@ form h2 {
 }
 .item.right {
   text-align: right;
+}
+
+.login-error {
+  display: flex;
+  height: 20px;
+  color: #d50000;
+  font-weight: 600;
+  line-height: normal;
+}
+.login-error .material-icons {
+  font-size: 16px;
+  margin: 2px 4px 2px 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    width: 100%;
+    border: none;
+    position: unset;
+    padding: 20px;
+  }
+  .flex-container {
+    height: unset; /* dont center form vertically */
+  }
 }
