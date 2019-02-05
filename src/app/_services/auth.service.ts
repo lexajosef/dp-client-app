@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
-import { map, mapTo, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,10 @@ export class AuthService {
 
   isUserLoggedIn(): boolean {
     return localStorage.getItem('access_token') !== null;
+  }
+
+  getUserToken(): string {
+    return localStorage.getItem('access_token');
   }
 
   private onLoggedIn(token: string) {
