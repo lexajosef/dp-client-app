@@ -62,6 +62,7 @@ a.btn {
   display: inline-block;
   line-height: 36px;
   padding: 0 8px;
+  text-decoration: none;
 }
 
 /* Forms */

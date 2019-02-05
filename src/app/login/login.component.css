@@ -24,15 +24,18 @@ form h2 {
 
 .btns-container {
   margin-top: 30px; 
-  display: flex;
-}
-.btns-container .item {
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 1;
 }
 .item.right {
+  grid-column-start: 2;
+  grid-row-start: 1;
   text-align: right;
 }
-
+.item.left {
+  grid-column-start: 1;
+}
 .login-error {
   display: flex;
   height: 20px;

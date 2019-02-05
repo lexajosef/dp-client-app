@@ -34,14 +34,16 @@ export class LoginComponent implements OnInit {
   get form() { return this.loginForm.controls; }
 
   onLogin() {
+    // reset form states
     this.submitted = true;
     this.errorMsg = '';
+    this.loading = true;
+
     // form is not valid, stop here
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.loading = true;
     this.authService.login(this.form.email.value, this.form.password.value)
       .subscribe(
         token => {
