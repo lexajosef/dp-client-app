@@ -40,12 +40,14 @@ form h2 {
   display: flex;
   height: 20px;
   color: #d50000;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 600;
   line-height: normal;
 }
 .login-error .material-icons {
   font-size: 16px;
-  margin: 2px 4px 2px 0;
+  margin-right: 4px;
 }
 
 @media only screen and (max-width: 600px) {

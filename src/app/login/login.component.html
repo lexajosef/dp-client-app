@@ -1,30 +1,30 @@
 <div class="flex-container">
   <div class="login-container" [ngClass]="{ 'loading' : loading }">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="loading">
-      <h2>Přihlášení</h2>
+      <h2>Sign in</h2>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" class="text-field" formControlName="email" [ngClass]="{ 'error' : errorMsg || (submitted && form.email.errors) }" id="email" placeholder="email@mail.com">
-        <div class="error visible" *ngIf="submitted && form.email.errors">
+        <input #email type="text" class="text-field" formControlName="email" [ngClass]="{ 'error' : errorMsg || (submitted && formControls.email.errors) }" id="email" aria-describedby="emailError" autofocus>
+        <div class="error visible" *ngIf="submitted && formControls.email.errors" id="emailError" role="alert" aria-live="assertive">
           <i class="material-icons">error</i> Neplatný formát e-mailu.
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Heslo</label>
-        <input type="password" class="text-field" formControlName="password" [ngClass]="{ 'error' : errorMsg || (submitted && form.password.errors) }" id="password">
-        <div class="error visible" *ngIf="submitted && form.password.errors">
+        <label for="password">Password</label>
+        <input #password type="password" class="text-field" formControlName="password" [ngClass]="{ 'error' : errorMsg || (submitted && formControls.password.errors) }" id="password" aria-describedby="pwError">
+        <div class="error visible" *ngIf="submitted && formControls.password.errors" id="pwError" role="alert" aria-live="assertive">
           <i class="material-icons">error</i> Heslo musí obsahovat alespoň 5 znaků.
         </div>
       </div>
-      <div class="login-error" *ngIf="errorMsg">
+      <div class="login-error" *ngIf="errorMsg" aria-live="assertive">
         <i class="material-icons">error</i> {{errorMsg}}
       </div>
       <div class="btns-container">
         <div class="item right">
-          <button class="btn btn-primary">Přihlásit</button>
+          <button class="btn btn-primary">Log in</button>
         </div>
         <div class="item left">
-          <a routerLink="/registration" class="btn btn-transparent btn-primary" tabindex="0">Registrovat</a>
+          <a routerLink="/registration" class="btn btn-transparent btn-primary" tabindex="0">Create account</a>
         </div>
       </div>
     </form>

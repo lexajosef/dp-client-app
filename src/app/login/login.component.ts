@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 
 import { AuthService } from '../_services/auth.service';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,9 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  @ViewChild('email') emailEl: ElementRef;
+  @ViewChild('password') passwordEl: ElementRef;
 
   loginForm: FormGroup;
   returnUrl: string = '/'; // '/' is a default route 
@@ -31,20 +35,26 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl']  || '/';
   }
 
-  get form() { return this.loginForm.controls; }
+  get formControls() { return this.loginForm.controls; }
 
   onLogin() {
     // reset form states
     this.submitted = true;
     this.errorMsg = '';
-    this.loading = true;
 
     // form is not valid, stop here
     if (this.loginForm.invalid) {
+      if (this.formControls.email.invalid) {
+        this.emailEl.nativeElement.focus();
+      } else {
+        this.passwordEl.nativeElement.focus();
+      }
+
       return;
     }
 
-    this.authService.login(this.form.email.value, this.form.password.value)
+    this.loading = true;
+    this.authService.login(this.formControls.email.value, this.formControls.password.value)
       .subscribe(
         token => {
           // successfully login, navigate to app
@@ -56,6 +66,9 @@ export class LoginComponent implements OnInit {
           } else {
             this.errorMsg = 'Vzdálený server neodpovídá.';
           }
+          
+          this.emailEl.nativeElement.focus();
+
           this.submitted = false;
           this.loading = false;
         }
