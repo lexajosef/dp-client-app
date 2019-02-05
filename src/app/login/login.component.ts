@@ -3,7 +3,6 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from "@angular/router";
 
 import { AuthService } from '../_services/auth.service';
-import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-login',
@@ -62,9 +61,9 @@ export class LoginComponent implements OnInit {
         },
         err => {
           if (err.status === 400) {
-            this.errorMsg = 'Chybné přihlašovací údaje.';
+            this.errorMsg = 'Invalid email or password.';
           } else {
-            this.errorMsg = 'Vzdálený server neodpovídá.';
+            this.errorMsg = 'The remote server is not responding.';
           }
           
           this.emailEl.nativeElement.focus();
