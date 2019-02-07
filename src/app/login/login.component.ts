@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../_services/auth.service';
 
@@ -79,11 +79,11 @@ export class LoginComponent implements OnInit {
         err => {
           if (err.status === 400) {
             this.errorMsg = 'Invalid email or password.';
+            this.emailEl.nativeElement.focus();
           } else {
             this.errorMsg = 'The remote server is not responding.';
           }
           
-          this.emailEl.nativeElement.focus();
           this.submitted = false;
           this.loading = false;
         }

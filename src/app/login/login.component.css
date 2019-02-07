@@ -2,11 +2,11 @@
   width: 360px;
   position: relative;
   border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 40px;
   margin: 20px;
 }
-.login-container.loading::before {
+.login-container.with-loading::before {
   content: "";
   display: block;
   position: absolute;
