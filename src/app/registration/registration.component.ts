@@ -76,7 +76,7 @@ export class RegistrationComponent implements OnInit {
       this.onFormValid();
     }
 
-    // send registration request
+    this.loading = true;
     this.sendRegRequest();
   }
 

@@ -55,21 +55,7 @@ export class LoginComponent implements OnInit {
     this.passwordEl.nativeElement.removeAttribute('aria-describedby');
   }
 
-  onLogin() {
-    // reset form states
-    this.submitted = true;
-    this.errorMsg = '';
-
-    // form is not valid, stop here
-    if (this.loginForm.invalid) {
-      this.onFormInvalid();
-      return;
-    } else {
-      this.onFormValid();
-    }
-
-    // send login to auth service
-    this.loading = true;
+  private sendLoginRequest() {
     this.authService.login(this.formControls.email.value, this.formControls.password.value)
       .subscribe(
         token => {
@@ -87,7 +73,24 @@ export class LoginComponent implements OnInit {
           this.submitted = false;
           this.loading = false;
         }
-    );
+      );
+  }
+
+  onLogin() {
+    // reset form states
+    this.submitted = true;
+    this.errorMsg = '';
+
+    // form is not valid, stop here
+    if (this.loginForm.invalid) {
+      this.onFormInvalid();
+      return;
+    } else {
+      this.onFormValid();
+    }
+
+    this.loading = true;
+    this.sendLoginRequest();
   }
 
 }
