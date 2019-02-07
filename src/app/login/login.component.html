@@ -4,14 +4,14 @@
       <h2>Sign in</h2>
       <div class="form-group">
         <label for="email">Email</label>
-        <input #email type="text" class="text-field" formControlName="email" [ngClass]="{ 'error' : errorMsg || (submitted && formControls.email.errors) }" id="email" aria-describedby="emailError" autofocus>
+        <input #email type="text" class="text-field" formControlName="email" [ngClass]="{ 'error' : errorMsg || (submitted && formControls.email.errors) }" id="email" autofocus>
         <div class="error visible" *ngIf="submitted && formControls.email.errors" id="emailError" role="alert" aria-live="assertive">
           <i class="material-icons">error</i> Invalid email format.
         </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input #password type="password" class="text-field" formControlName="password" [ngClass]="{ 'error' : errorMsg || (submitted && formControls.password.errors) }" id="password" aria-describedby="pwError">
+        <input #password type="password" class="text-field" formControlName="password" [ngClass]="{ 'error' : errorMsg || (submitted && formControls.password.errors) }" id="password">
         <div class="error visible" *ngIf="submitted && formControls.password.errors" id="pwError" role="alert" aria-live="assertive">
           <i class="material-icons">error</i> Password must contain at least 5 characters.
         </div>

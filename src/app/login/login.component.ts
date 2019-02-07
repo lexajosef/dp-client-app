@@ -15,10 +15,10 @@ export class LoginComponent implements OnInit {
   @ViewChild('password') passwordEl: ElementRef;
 
   loginForm: FormGroup;
-  returnUrl: string = '/'; // '/' is a default route 
+  returnUrl: string;
+  errorMsg: string;
   loading: boolean = false;
   submitted = false;
-  errorMsg: string = '';
 
   constructor(
     private authService: AuthService,
@@ -36,6 +36,25 @@ export class LoginComponent implements OnInit {
 
   get formControls() { return this.loginForm.controls; }
 
+  private onFormInvalid() {
+    if (this.formControls.email.invalid) {
+      this.emailEl.nativeElement.setAttribute('aria-describedby', 'emailError');
+    } 
+    if (this.formControls.password.invalid) {
+      this.passwordEl.nativeElement.setAttribute('aria-describedby', 'pwError');
+    }
+
+    // set focus back to the login form
+    this.formControls.email.invalid ? 
+      this.emailEl.nativeElement.focus() :
+      this.passwordEl.nativeElement.focus();
+  }
+
+  private onFormValid() {
+    this.emailEl.nativeElement.removeAttribute('aria-describedby');
+    this.passwordEl.nativeElement.removeAttribute('aria-describedby');
+  }
+
   onLogin() {
     // reset form states
     this.submitted = true;
@@ -43,15 +62,13 @@ export class LoginComponent implements OnInit {
 
     // form is not valid, stop here
     if (this.loginForm.invalid) {
-      if (this.formControls.email.invalid) {
-        this.emailEl.nativeElement.focus();
-      } else {
-        this.passwordEl.nativeElement.focus();
-      }
-
+      this.onFormInvalid();
       return;
+    } else {
+      this.onFormValid();
     }
 
+    // send login to auth service
     this.loading = true;
     this.authService.login(this.formControls.email.value, this.formControls.password.value)
       .subscribe(
@@ -67,7 +84,6 @@ export class LoginComponent implements OnInit {
           }
           
           this.emailEl.nativeElement.focus();
-
           this.submitted = false;
           this.loading = false;
         }
