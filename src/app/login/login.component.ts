@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   get formControls() { return this.loginForm.controls; }
 
   private onFormInvalid() {
+    // set described by error
     if (this.formControls.email.invalid) {
       this.emailEl.nativeElement.setAttribute('aria-describedby', 'emailError');
     } 

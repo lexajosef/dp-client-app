@@ -6,28 +6,28 @@
         <label for="">Name</label>
         <input #name type="text" class="text-field" formControlName="name" [ngClass]="{ 'error' : submitted && formControls.name.errors }" id="name" autofocus>
         <div class="error" *ngIf="submitted && formControls.name.errors" id="nameError" role="alert" aria-live="assertive">
-          <i class="material-icons">error</i> Error text here
+          <i class="material-icons">error</i> Name is required.
         </div>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
         <input #email type="email" class="text-field" formControlName="email" [ngClass]="{ 'error' : submitted && formControls.email.errors }" id="email">
         <div class="error" *ngIf="submitted && formControls.name.errors" id="emailError" role="alert" aria-live="assertive">
-          <i class="material-icons">error</i> Error text here
+          <i class="material-icons">error</i> Invalid email format.
         </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input #password type="password" class="text-field" formControlName="password" [ngClass]="{ 'error' : submitted && formControls.password.errors }" id="password">
-        <div class="error" *ngIf="submitted && formControls.name.errors" id="nameError" role="alert" aria-live="assertive">
-          <i class="material-icons">error</i> Error text here
+        <div class="error" *ngIf="submitted && formControls.name.errors" id="passwordError" role="alert" aria-live="assertive">
+          <i class="material-icons">error</i> Password must contain at least 5 characters.
         </div>
       </div>
       <div class="form-group">
         <label for="passwordConfirm">Password confirm</label>
         <input #passwordConfirm type="password" class="text-field" formControlName="passwordConfirm" [ngClass]="{ 'error' : submitted && formControls.passwordConfirm.errors }" id="passwordConfirm">
-        <div class="error" *ngIf="submitted && formControls.name.errors" id="nameError" role="alert" aria-live="assertive">
-          <i class="material-icons">error</i> Error text here
+        <div class="error" *ngIf="submitted && formControls.name.errors" id="passwordConfirmError" role="alert" aria-live="assertive">
+          <i class="material-icons">error</i> Passwords don't match.
         </div>
       </div>
       <div class="login-error" *ngIf="errorMsg" aria-live="assertive">

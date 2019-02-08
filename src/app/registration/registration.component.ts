@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserService } from '../_services/user.service';
+import { UserService } from '../_services/user.service';}
 import { User } from '../_models/user';
 
 @Component({
@@ -39,15 +39,32 @@ export class RegistrationComponent implements OnInit {
   get formControls() { return this.regForm.controls; }
 
   private onFormInvalid() {
+    // set described by error
+    if (this.formControls.name.invalid) {
+      this.nameEl.nativeElement.setAttribute('aria-describedby', 'nameError');
+    }
+    if (this.formControls.email.invalid) {
+      this.emailEl.nativeElement.setAttribute('aria-describedby', 'emailError');
+    }
+    if (this.formControls.password.invalid) {
+      this.passwordEl.nativeElement.setAttribute('aria-describedby', 'passwordError');
+    }
+    if (this.formControls.passwordConfirm.invalid) {
+      this.passwordConfirmEl.nativeElement.setAttribute('aria-describedby', 'passwordConfirmError');
+    }
 
+    // TODO: set focus in form
   }
 
   private onFormValid() {
-
+    this.nameEl.nativeElement.removeAttribute('aria-describedby');
+    this.emailEl.nativeElement.removeAttribute('aria-describedby');
+    this.passwordEl.nativeElement.removeAttribute('aria-describedby');
+    this.passwordConfirmEl.nativeElement.removeAttribute('aria-describedby');
   }
 
   private sendRegRequest() {
-    let user: User = {
+    const user: User = {
       name: this.formControls.name.value,
       email: this.formControls.email.value,
       password: this.formControls.password.value
@@ -55,11 +72,21 @@ export class RegistrationComponent implements OnInit {
 
     this.userService.register(user)
       .subscribe(
-        user => {
-          console.log(user);
-          // TODO: show success message and redirect link to login
+        resp => {
+          console.log(resp);
+          // TODO: login user and redirect to app component
         },
-        error => console.log(error)
+        err => {
+          if (err.status === 400) {
+            this.errorMsg = 'User with this e-mail is already registred.';
+            this.emailEl.nativeElement.focus();
+          } else {
+            this.errorMsg = 'The remote server is not responding.';
+          }
+
+          this.submitted = false;
+          this.loading = false;
+        }
       );
   }
 
