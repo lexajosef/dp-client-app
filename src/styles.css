@@ -96,10 +96,13 @@ a.btn {
   border: 2px solid #d50000;
 }
 .form-group div.error {
-  display: flex;
+  display: none;
   font-size: 12px;
   color: #d50000;
   line-height: normal;
+}
+.form-group div.error.show {
+  display: flex;
 }
 .form-group div.error .material-icons {
   font-size: 14px;
