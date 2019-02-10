@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
+  readonly tokenKey: string = 'token';
+
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<string> {
@@ -24,19 +26,19 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem(this.tokenKey);
   }
 
   isUserLoggedIn(): boolean {
-    return localStorage.getItem('access_token') !== null;
+    return localStorage.getItem(this.tokenKey) !== null;
   }
 
   getUserToken(): string {
-    return localStorage.getItem('access_token');
+    return localStorage.getItem(this.tokenKey);
   }
 
   private onLoggedIn(token: string) {
-    localStorage.setItem('access_token', token);
+    localStorage.setItem(this.tokenKey, token);
   }
 
 }

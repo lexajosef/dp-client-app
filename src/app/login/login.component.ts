@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   @ViewChild('password') passwordEl: ElementRef;
 
   loginForm: FormGroup;
-  returnUrl: string;
   errorMsg: string;
   emailErrMsg: string;
   showEmailError: boolean = false;
@@ -32,8 +31,6 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [ Validators.email, Validators.required ]),
       password: new FormControl('', [ Validators.minLength(5), Validators.required ])
     });
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl']  || '/';
   }
 
   get formControls() { return this.loginForm.controls; }
@@ -72,7 +69,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         token => {
           // successfully login, navigate to app
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate(['']);
         },
         err => {
           if (err.status === 400) {
