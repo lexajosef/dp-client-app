@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   returnUrl: string;
   errorMsg: string;
+  emailErrMsg: string;
+  showEmailError: boolean = false;
   loading: boolean = false;
   submitted = false;
 
@@ -40,7 +42,15 @@ export class LoginComponent implements OnInit {
     // set described by error
     if (this.formControls.email.invalid) {
       this.emailEl.nativeElement.setAttribute('aria-describedby', 'emailError');
-    } 
+      this.showEmailError = true;
+      if (this.formControls.email.errors.required) {
+        this.emailErrMsg = 'Email is required.';
+      } else {
+        this.emailErrMsg = 'Invalid email format.';
+      }
+    } else {
+      this.showEmailError = false;
+    }
     if (this.formControls.password.invalid) {
       this.passwordEl.nativeElement.setAttribute('aria-describedby', 'pwError');
     }
@@ -54,6 +64,7 @@ export class LoginComponent implements OnInit {
   private onFormValid() {
     this.emailEl.nativeElement.removeAttribute('aria-describedby');
     this.passwordEl.nativeElement.removeAttribute('aria-describedby');
+    this.showEmailError = false;
   }
 
   private sendLoginRequest() {
