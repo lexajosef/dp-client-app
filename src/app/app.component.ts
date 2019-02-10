@@ -10,9 +10,13 @@ import { AuthService } from './_services/auth.service';
 export class AppComponent implements OnInit {
   title = 'dp-client-app';
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     
+  }
+
+  isUserLoggedIn(): boolean {
+    return this.authService.isUserLoggedIn();
   }
 }

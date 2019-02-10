@@ -11,12 +11,16 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NavigationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
