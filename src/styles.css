@@ -90,10 +90,12 @@ a.btn {
   border: 1px solid rgba(0, 0, 0, .4);
 }
 .text-field:focus {
-  border: 2px solid rgb(var(--main-color-rgb));
+  border: 1px solid rgb(var(--main-color-rgb));
+  box-shadow: 0 0 0px 1px rgb(var(--main-color-rgb));
 }
 .text-field.error {
-  border: 2px solid #d50000;
+  border: 1px solid #d50000;
+  box-shadow: 0 0 0px 1px #d50000;
 }
 .form-group div.error {
   display: none;
