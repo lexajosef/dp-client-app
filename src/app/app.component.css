@@ -1,0 +1,7 @@
+.main-container {
+  padding-top: 56px;
+  padding-left: 256px;
+}
+.main-container--drawer-close {
+  padding-left: unset;
+}
