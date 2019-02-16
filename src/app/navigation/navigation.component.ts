@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+
+import { NavigationUIService } from '../_services/navigation-ui.service';
 
 @Component({
   selector: 'app-navigation',
@@ -7,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('drawer') drawer: ElementRef;
+
+  constructor(private navigationUIService: NavigationUIService) { }
 
   ngOnInit() {
     
+  }
+
+  get drawerEl() { return this.drawer.nativeElement }
+
+  menuBtnClick() {
+    if (this.navigationUIService.getAsideNavVisible()) {
+      
+    } else {
+
+    }
+    this.navigationUIService.toggleAsideNavVisible();
   }
 
 }

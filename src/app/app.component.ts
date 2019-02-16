@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AuthService } from './_services/auth.service';
+import { NavigationUIService } from './_services/navigation-ui.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,16 @@ import { AuthService } from './_services/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private navigationUIService: NavigationUIService
+  ) { }
 
   ngOnInit() { }
+
+  setMainContainerClass(): void {
+    console.log('To set class from navigation component');
+  }
 
   isUserLoggedIn(): boolean {
     return this.authService.isUserLoggedIn();
