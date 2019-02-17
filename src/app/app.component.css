@@ -1,7 +1,13 @@
 .main-container {
   padding-top: 56px;
   padding-left: 256px;
+  transition: padding 0.2s 0ms cubic-bezier(0, 0, 0.2, 1);
 }
 .main-container--drawer-close {
   padding-left: unset;
+}
+@media only screen and (max-width: 898px) {
+  .main-container {
+    padding-left: unset;
+  }
 }

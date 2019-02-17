@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class NavigationUIService {
 
-  private asideNavVisible: boolean = true;
+  private asideNavVisible: boolean = false;
+  widthLimit: number = 900;
 
   constructor() { }
 

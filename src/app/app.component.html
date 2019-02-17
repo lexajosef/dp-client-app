@@ -1,4 +1,4 @@
 <app-navigation *ngIf="isUserLoggedIn()"></app-navigation>
-<main [ngClass]="{ 'main-container--drawer-close': !this.navigationUIService.getAsideNavVisible() }" class="main-container">
+<main [ngClass]="{ 'main-container--drawer-close': this.setDrawerCloseClass() }" class="main-container">
   <router-outlet></router-outlet>
 </main>

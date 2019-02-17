@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() { }
 
+  setDrawerCloseClass(): boolean {
+    return (!this.navigationUIService.getAsideNavVisible() 
+        && (window.innerWidth >= this.navigationUIService.widthLimit));
+  }
+
   setMainContainerClass(): void {
     console.log('To set class from navigation component');
   }

@@ -1,4 +1,4 @@
-<aside #drawer class="drawer drawer--open">
+<aside #drawer (click)="drawerClick($event)" class="drawer" [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
   <nav class="drawer--drawer">
     <div class="list">
       <a class="list-item list-item--activated" href="index.html">
