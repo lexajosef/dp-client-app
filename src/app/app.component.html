@@ -1,4 +1,6 @@
 <app-navigation *ngIf="isUserLoggedIn()"></app-navigation>
 <main [ngClass]="{ 'main-container--drawer-close': this.setDrawerCloseClass() }" class="main-container">
-  <router-outlet></router-outlet>
+  <div class="padding-container">
+    <router-outlet></router-outlet>
+  </div>
 </main>

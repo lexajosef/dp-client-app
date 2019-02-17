@@ -1,6 +1,7 @@
 /* Global styles of the application. */
 :root {
-  --main-color-rgb: 98, 0, 238;
+  /* --main-color-rgb: 98, 0, 238; */
+  --main-color-rgb: 36, 41, 46;
 }
 
 body {

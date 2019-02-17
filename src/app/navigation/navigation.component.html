@@ -1,7 +1,7 @@
 <header (window:resize)="onWindowResize()" class="top-app-bar">
   <div class="top-app-bar--row">
     <section class="top-app-bar--section">
-      <button (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon">menu</button>
+      <button (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon" aria-label="menu">menu</button>
       <span class="top-app-bar--title">DP A11Y Client</span>
     </section>
   </div>  
@@ -10,17 +10,14 @@
 <aside #drawer (click)="drawerClick($event)" class="drawer" [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
   <nav class="drawer--drawer">
     <div class="list">
-      <a class="list-item list-item--activated" href="index.html">
-        <i class="material-icons list-item--graphic" aria-hidden="true">view_agenda</i>First
+      <a class="list-item list-item--activated" routerLink="/home">
+        <i class="material-icons list-item--graphic" aria-hidden="true">view_agenda</i>Home
       </a>
-      <a class="list-item" href="#">
+      <a class="list-item" routerLink="/login">
         <i class="material-icons list-item--graphic" aria-hidden="true">description</i>Second
       </a>
-      <a class="list-item" href="#">
+      <a class="list-item" routerLink="/login">
         <i class="material-icons list-item--graphic" aria-hidden="true">flip_to_front</i>Third
-      </a>
-      <a class="list-item" href="#">
-        <i class="material-icons list-item--graphic" aria-hidden="true">list</i>Fourth
       </a>
     </div>
   </nav>

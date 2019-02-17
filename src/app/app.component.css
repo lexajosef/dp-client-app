@@ -6,6 +6,11 @@
 .main-container--drawer-close {
   padding-left: unset;
 }
+
+.padding-container {
+  padding: 0 16px;
+}
+
 @media only screen and (max-width: 898px) {
   .main-container {
     padding-left: unset;
