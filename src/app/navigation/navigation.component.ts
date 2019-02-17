@@ -11,6 +11,8 @@ export class NavigationComponent implements OnInit {
 
   @ViewChild('drawer') drawer: ElementRef;
 
+  private fromMobileToDesktop: boolean = false;
+
   constructor(private navigationUIService: NavigationUIService) {
     if (window.innerWidth >= this.navigationUIService.widthLimit) {
       // open drawer on desktop in default
@@ -22,7 +24,7 @@ export class NavigationComponent implements OnInit {
     
   }
 
-  get drawerEl() { return this.drawer.nativeElement } // TODO: need this element ref???
+  get drawerEl() { return this.drawer.nativeElement }
 
   menuBtnClick() {
     if (window.innerWidth < this.navigationUIService.widthLimit) {
@@ -40,6 +42,13 @@ export class NavigationComponent implements OnInit {
     if (event.target === this.drawerEl) {
       this.navigationUIService.setAsideNavVisible(false);
       document.body.classList.remove('drawer-scroll-lock');
+    }
+  }
+
+  onWindowResize() {
+    if (window.innerWidth >= this.navigationUIService.widthLimit 
+        && !this.navigationUIService.getAsideNavVisible()) {
+      this.navigationUIService.setAsideNavVisible(true);
     }
   }
 }

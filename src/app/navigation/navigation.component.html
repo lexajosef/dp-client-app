@@ -1,3 +1,12 @@
+<header (window:resize)="onWindowResize()" class="top-app-bar">
+  <div class="top-app-bar--row">
+    <section class="top-app-bar--section">
+      <button (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon">menu</button>
+      <span class="top-app-bar--title">DP A11Y Client</span>
+    </section>
+  </div>  
+</header>
+
 <aside #drawer (click)="drawerClick($event)" class="drawer" [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
   <nav class="drawer--drawer">
     <div class="list">
@@ -16,12 +25,3 @@
     </div>
   </nav>
 </aside>
-
-<header class="top-app-bar">
-  <div class="top-app-bar--row">
-    <section class="top-app-bar--section">
-      <button (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon">menu</button>
-      <span class="top-app-bar--title">DP A11Y Client</span>
-    </section>
-  </div>  
-</header>
