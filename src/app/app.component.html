@@ -1,5 +1,5 @@
 <app-navigation *ngIf="isUserLoggedIn()"></app-navigation>
-<main [ngClass]="{ 'main-container--drawer-close': this.setDrawerCloseClass() }" [attr.inert]="markMainAsInert() ? '' : null" class="main-container">
+<main [ngClass]="{ 'main-container--drawer-close': this.setDrawerCloseClass(), 'main-container': this.isUserLoggedIn() }" [attr.inert]="markMainAsInert() ? '' : null">
   <div class="padding-container">
     <router-outlet></router-outlet>
   </div>

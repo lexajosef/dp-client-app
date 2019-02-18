@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as jwtDecode from 'jwt-decode';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -39,6 +40,7 @@ export class AuthService {
 
   private onLoggedIn(token: string) {
     localStorage.setItem(this.tokenKey, token);
+    console.log(jwtDecode(token));
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as KeyCodes from 'keycode-js';
 
+import { AuthService } from '../_services/auth.service';
 import { NavigationUIService } from '../_services/navigation-ui.service';
 
 @Component({
@@ -14,7 +16,11 @@ export class NavigationComponent implements OnInit {
   @ViewChild('drawer') drawer: ElementRef;
   @ViewChild('menuButton') menuButton: ElementRef;
 
-  constructor(private navigationUIService: NavigationUIService) {
+  constructor(
+    private navigationUIService: NavigationUIService,
+    private authService: AuthService,
+    private router: Router
+  ) {
     if (window.innerWidth >= this.navigationUIService.widthLimit) {
       // open drawer on desktop in default
       this.navigationUIService.setAsideNavVisible(true);
@@ -83,5 +89,10 @@ export class NavigationComponent implements OnInit {
     if (window.innerWidth >= this.navigationUIService.widthLimit) {
       this.headerEl.removeAttribute('inert');
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
