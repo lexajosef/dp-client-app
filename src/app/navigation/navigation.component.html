@@ -13,13 +13,13 @@
 <aside #drawer (click)="onDrawerClick($event)" (keydown)="onDrawerKeyDown($event)" class="drawer" [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
   <nav class="drawer--drawer">
     <div class="list">
-      <a class="list-item list-item--activated" routerLink="/home">
-        <i class="material-icons list-item--graphic" aria-hidden="true">view_agenda</i>Home
+      <a class="list-item" routerLink="/home" routerLinkActive="list-item--activated">
+        <i class="material-icons list-item--graphic" aria-hidden="true">home</i>Home
       </a>
-      <a class="list-item" routerLink="/login">
-        <i class="material-icons list-item--graphic" aria-hidden="true">description</i>Second
+      <a class="list-item" routerLink="/editor" routerLinkActive="list-item--activated">
+        <i class="material-icons list-item--graphic" aria-hidden="true">note</i>Editor
       </a>
-      <a class="list-item" routerLink="/login">
+      <a class="list-item" routerLink="#" routerLinkActive="list-item--activated">
         <i class="material-icons list-item--graphic" aria-hidden="true">flip_to_front</i>Third
       </a>
     </div>

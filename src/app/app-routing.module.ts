@@ -9,12 +9,14 @@ import { LoggedGuard } from './_guards/logged.guard';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
+import { EditorComponent } from './editor/editor.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
   { path: 'login', canActivate: [LoggedGuard], component: LoginComponent },
   { path: 'registration', canActivate: [LoggedGuard], component: RegistrationComponent },
+  { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
+  { path: 'editor', canActivate: [AuthGuard], component: EditorComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
