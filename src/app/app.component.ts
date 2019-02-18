@@ -29,4 +29,8 @@ export class AppComponent implements OnInit {
   isUserLoggedIn(): boolean {
     return this.authService.isUserLoggedIn();
   }
+
+  markMainAsInert(): boolean {
+    return this.navigationUIService.getAsideNavVisible() && window.innerWidth < this.navigationUIService.widthLimit;
+  }
 }

@@ -1,13 +1,13 @@
-<header (window:resize)="onWindowResize()" class="top-app-bar">
+<header #header (window:resize)="onWindowResize()" class="top-app-bar">
   <div class="top-app-bar--row">
     <section class="top-app-bar--section">
-      <button (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon" aria-label="menu">menu</button>
+      <button #menuButton (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon" aria-label="menu">menu</button>
       <span class="top-app-bar--title">DP A11Y Client</span>
     </section>
   </div>  
 </header>
 
-<aside #drawer (click)="drawerClick($event)" class="drawer" [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
+<aside #drawer (click)="onDrawerClick($event)" (keydown)="onDrawerKeyDown($event)" class="drawer" [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
   <nav class="drawer--drawer">
     <div class="list">
       <a class="list-item list-item--activated" routerLink="/home">
