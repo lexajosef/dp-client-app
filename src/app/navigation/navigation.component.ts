@@ -45,11 +45,11 @@ export class NavigationComponent implements OnInit {
         document.body.classList.remove('drawer-scroll-lock');
       } else {
         document.body.classList.add('drawer-scroll-lock');
-        this.drawerEl.querySelector('a').focus();
-
         this.headerEl.setAttribute('inert', '');
         this.drawerEl.removeAttribute('inert');
         // inert to main container is set through navigationUIService in app.component.html
+
+        this.drawerEl.querySelector('a').focus();
       }
     }
 
