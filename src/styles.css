@@ -20,13 +20,20 @@ body {
   height: 100vh;
 }
 
+.padding-container {
+  padding: 0 16px;
+}
+
 /* Buttons */
 .btn {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   height: 36px;
   padding: 0 16px;
   font-size: 14px;
   font-weight: 600;
-  /* text-transform: uppercase; */
   border: none;
   border-radius: 4px;
   box-sizing: border-box;
@@ -45,6 +52,21 @@ body {
 .btn.btn-primary:focus {
   background-color: rgba(var(--main-color-rgb), .8);
 }
+.btn.btn-blue {
+  background-color: rgb(26, 115, 232);
+  color: rgb(255, 255, 255);
+}
+.btn.btn-blue:hover {
+  background-color: rgba(26, 115, 232, .9);
+}
+.btn.btn-blue:focus {
+  background-color: rgba(26, 115, 232, .8);
+}
+.btn .material-icons {
+  margin-right: 4px;
+  /* font-size: 20px; */
+}
+
 .btn:hover,
 .btn:active,
 .btn:focus {

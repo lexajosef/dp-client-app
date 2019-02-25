@@ -1,0 +1,110 @@
+.container {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.flex-item {
+  padding: 0 16px;
+}
+
+.flex-item.posts-btns {
+  padding: 0 16px 16px 16px;
+}
+
+.flex-item.editor-btns {
+  display: flex;
+  padding: 8px 16px;
+  background-color: rgba(0, 0, 0, .03);
+}
+.btns-section {
+  height: 36px;
+  padding: 0 12px;
+}
+.btns-section:first-child {
+  padding: 0 12px 0 0;
+}
+.btns-section:last-child {
+  padding: 0 0 0 12px;
+}
+.btns-section:not(:first-child) {
+  border-left: 2px solid rgba(0, 0, 0, .08);
+}
+
+.flex-item.with-editor {
+  display: flex;
+  background-color: rgba(0, 0, 0, .06);
+  justify-content: center;
+  flex: 1;
+}
+iframe {
+  width: 800px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+  padding: 32px;
+  margin: 16px;
+  background-color: rgb(255, 255, 255);
+}
+
+.icon-button {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+  padding: 6px;
+  margin-right: 6px;
+  border-radius: 4px;
+}
+.icon-button:hover {
+  background-color: rgba(0, 0, 0, .05);
+  cursor: pointer;
+} 
+.icon-button:focus, .icon-button:active {
+  background-color: rgba(var(--main-color-rgb), .06);
+  cursor: pointer;
+}
+.icon-button .material-icons {
+  color: rgba(0, 0, 0, .7);
+  /* font-size: 20px; */
+}
+.icon-button:focus .material-icons {
+  color: rgb(var(--main-color-rgb));
+}
+.icon-button:last-child {
+  margin-right: 0px;
+}
+
+.text-field {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border: 1px solid rgba(0, 0, 0, 0);
+  outline: 0px;
+  box-sizing: border-box;
+  font-size: 14px;
+  background: transparent;
+}
+.text-field:hover {
+  background: rgba(0, 0, 0, .04);
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+.text-field:focus {
+  background: rgba(0, 0, 0, .06);
+  border: 1px solid rgb(var(--main-color-rgb));
+  box-shadow: 0 0 0px 1px rgb(var(--main-color-rgb));
+}
+.text-field.in-wysiwyg {
+  width: 100px;
+  height: 34px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 3px 6px;
+}
+
+.posts-btns .btn {
+  margin-right: 8px;
+}
