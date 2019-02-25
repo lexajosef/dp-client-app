@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 export class AuthService {
 
   readonly tokenKey: string = 'token';
+  readonly userPayloadKey: string = 'userObj';
 
   constructor(private http: HttpClient) { }
 
@@ -38,9 +39,13 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
+  getUserTokenPayload(): any {
+    return jwtDecode(this.getUserToken());
+  }
+
   private onLoggedIn(token: string) {
     localStorage.setItem(this.tokenKey, token);
-    console.log(jwtDecode(token));
+    localStorage.setItem(this.userPayloadKey, JSON.stringify(this.getUserTokenPayload()));
   }
 
 }
