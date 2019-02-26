@@ -27,6 +27,20 @@ export class EditorComponent implements OnInit {
     editorStyle.appendChild(document.createTextNode(`
       body {
         font-family: Roboto, sans-serif;
+      }
+      
+      ::-webkit-scrollbar {
+        width: 10px;
+        cursor: pointer !important;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #AAA;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #888;
       }`
     ));
 

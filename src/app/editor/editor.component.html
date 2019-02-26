@@ -31,7 +31,7 @@
       </button>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('fontName', this.value)" class="text-field in-wysiwyg">
+      <select (change)="doEditorCommand('fontName', $event.target.value)" class="text-field in-wysiwyg">
         <option value="Arial">Arial</option>
         <option value="Comic Sans MS">Comic Sans MS</option>
         <option value="Courier">Courier</option>
@@ -42,7 +42,7 @@
       </select>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('fontSize', this.value)" class="text-field in-wysiwyg" style="width:64px;">
+      <select (change)="doEditorCommand('fontSize', $event.target.value)" class="text-field in-wysiwyg" style="width:64px;">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
