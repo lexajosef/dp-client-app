@@ -31,6 +31,7 @@
   flex-direction: row-reverse;
 }
 .top-app-bar--title {
+  display: inline-flex;
   font-size: 1.25rem;
   line-height: 2rem;
   font-weight: 500;
@@ -41,6 +42,10 @@
   white-space: nowrap;
   overflow: hidden;
   z-index: 1;
+}
+.top-app-bar--title .material-icons {
+  font-size: 32px;
+  margin-right: 8px;
 }
 .top-app-bar--navigation-icon {
   display: flex;
