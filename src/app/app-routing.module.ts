@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
+import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'registration', canActivate: [LoggedGuard], component: RegistrationComponent },
   { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
   { path: 'editor', canActivate: [AuthGuard], component: EditorComponent },
+  { path: 'help', canActivate: [AuthGuard], component: HelpComponent },
   { path: '**', redirectTo: 'home' }
 ];
 

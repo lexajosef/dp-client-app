@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditorComponent } from './editor/editor.component';
     RegistrationComponent,
     NavigationComponent,
     HomeComponent,
-    EditorComponent
+    EditorComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
