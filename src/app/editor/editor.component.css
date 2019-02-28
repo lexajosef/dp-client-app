@@ -98,7 +98,7 @@ iframe {
   box-shadow: 0 0 0px 1px rgb(var(--main-color-rgb));
 }
 .text-field.in-wysiwyg {
-  width: 100px;
+  width: 120px;
   height: 34px;
   margin-top: 0;
   margin-bottom: 0;

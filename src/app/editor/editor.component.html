@@ -42,6 +42,14 @@
       </select>
     </div>
     <div class="btns-section">
+      <select (change)="doEditorCommand('formatBlock', $event.target.value)" class="text-field in-wysiwyg">
+        <option value="<h1>">Heading 1</option>
+        <option value="<h2>">Heading 2</option>
+        <option value="<h3>">Heading 3</option>
+        <option value="p">Normal text</option>
+      </select>
+    </div>
+    <div class="btns-section">
       <select (change)="doEditorCommand('fontSize', $event.target.value)" class="text-field in-wysiwyg" style="width:64px;">
         <option value="1">1</option>
         <option value="2">2</option>
