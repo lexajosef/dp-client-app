@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import * as KeyCodes from 'keycode-js';
 
 @Component({
   selector: 'app-editor',
@@ -8,15 +9,19 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class EditorComponent implements OnInit {
 
   @ViewChild('editor') editor: ElementRef;
+  @ViewChild('toolbar') toolbar: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
     this.editorDocument.designMode = 'on';
     this.addStylesToEditor();
+    this.focusEditor();
+    this.editorKeyboardOperability();
   }
 
   get editorDocument(): any { return (<any> this.editor.nativeElement).contentDocument }
+  get toolbarElement(): HTMLElement { return this.toolbar.nativeElement }
 
   private addStylesToEditor() {
     let linkRobotoFont: HTMLLinkElement = this.editorDocument.createElement('link');
@@ -52,6 +57,86 @@ export class EditorComponent implements OnInit {
     this.editorDocument.body.focus();
   }
 
+  private navigationShortcuts(keyCode: number) {
+    // Alt + Shift shortcuts
+    switch (keyCode) {
+      // focus toolbar
+      case KeyCodes.KEY_T:
+        this.toolbarElement.focus();
+        break;
+      // focus editor
+      case KeyCodes.KEY_E:
+        this.focusEditor();
+        break;
+    }
+
+    event.preventDefault();
+  }
+
+  private toolbarNavigation(event: KeyboardEvent) {
+    let sibling: any;
+
+    switch (event.keyCode) {
+      // navigate to next control
+      case KeyCodes.KEY_RIGHT:
+        sibling = document.activeElement.nextElementSibling;
+        if (sibling) {
+          sibling.focus();
+        } else if (document.activeElement.parentElement.nextElementSibling) {
+          sibling = document.activeElement.parentElement.nextElementSibling.firstChild;
+          if (sibling) {
+            sibling.focus();
+          }
+        }
+        event.preventDefault();
+        break;
+      // navigate to previous control
+      case KeyCodes.KEY_LEFT:
+        sibling = document.activeElement.previousSibling;
+        if (sibling) {
+          sibling.focus();
+        } else if (document.activeElement.parentElement.previousElementSibling) {
+          sibling = document.activeElement.parentElement.previousElementSibling.lastChild;
+          if (sibling) {
+            sibling.focus();
+          }
+        }
+        event.preventDefault();
+        break;
+      // tab key stuff
+      case KeyCodes.KEY_TAB:
+        if (!event.shiftKey) {
+          this.focusEditor();
+          event.preventDefault();
+        }
+        break;
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if (event.altKey && event.shiftKey) {
+      this.navigationShortcuts(event.keyCode);
+    } else if (this.toolbarElement.querySelector(':focus')) {
+      this.toolbarNavigation(event);
+    }
+  }
+
+  private onEditorKeyDown(event: KeyboardEvent) {
+    if (event.altKey && event.shiftKey && event.keyCode === KeyCodes.KEY_T) {
+      const forFocus: HTMLElement = document.querySelector('.editor-btns button');
+      if (forFocus) {
+        forFocus.focus();
+      }
+
+      event.preventDefault();
+    }
+  }
+
+  private editorKeyboardOperability() {
+    this.editorDocument.addEventListener('keydown', this.onEditorKeyDown);
+  }
+
   doEditorCommand(command: any, arg: any = null) {
     let success: boolean;
 
@@ -69,7 +154,16 @@ export class EditorComponent implements OnInit {
       alert(msg);
     }
 
+    if (command === 'undo' || command === 'redo') {
+      return;
+    }
+    
     this.focusEditor();
+  }
+
+  createLinkCommand() {
+    const url: string = prompt('Enter a link URL', 'https://');
+    this.doEditorCommand('createLink', url);
   }
 
 }

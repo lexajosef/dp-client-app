@@ -10,7 +10,7 @@
       <i class="material-icons">delete</i>Delete
     </button>
   </div>
-  <div class="flex-item editor-btns">
+  <div #toolbar class="flex-item editor-btns">
     <div class="btns-section">
       <button (click)="doEditorCommand('undo')" class="icon-button">
         <i class="material-icons">undo</i>
@@ -75,7 +75,7 @@
       </button>
     </div>
     <div class="btns-section">
-      <button (click)="doEditorCommand('createLink', prompt('Enter a link URL', 'https://'))" class="icon-button">
+      <button (click)="createLinkCommand()" class="icon-button">
         <i class="material-icons">insert_link</i>
       </button>
     </div>
