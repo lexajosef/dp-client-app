@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
+
+// Interceptors
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 
@@ -16,6 +18,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
 import { HelpComponent } from './help/help.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { HelpComponent } from './help/help.component';
     NavigationComponent,
     HomeComponent,
     EditorComponent,
-    HelpComponent
+    HelpComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
