@@ -11,6 +11,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
 import { HelpComponent } from './help/help.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
   { path: 'editor', canActivate: [AuthGuard], component: EditorComponent },
   { path: 'help', canActivate: [AuthGuard], component: HelpComponent },
+  { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
