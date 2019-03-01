@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
 
 // Components
 import { AppComponent } from './app.component';
@@ -33,7 +34,8 @@ import { HelpComponent } from './help/help.component';
     ReactiveFormsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
