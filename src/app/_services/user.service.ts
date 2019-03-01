@@ -5,7 +5,6 @@ import { User } from '../_models/user';
 import { environment } from '../../environments/environment';
 
 import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +17,17 @@ export class UserService {
 
   register(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/users`, user);
+  }
+
+  getById(id: number | string): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/${id}`);
+  }
+
+  updateMe(user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/users/me`, user);
+  }
+
+  update(user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/users/${user.id}`, user);
   }
 }
