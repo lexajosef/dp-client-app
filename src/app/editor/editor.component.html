@@ -31,7 +31,7 @@
       </button>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('fontName', $event.target.value)" class="text-field in-wysiwyg">
+      <select (change)="doEditorCommand('fontName', $event.target.value)" class="text-field in-wysiwyg" aria-label="Font selection">
         <option value="Arial">Arial</option>
         <option value="Comic Sans MS">Comic Sans MS</option>
         <option value="Courier">Courier</option>
@@ -42,7 +42,7 @@
       </select>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('formatBlock', $event.target.value)" class="text-field in-wysiwyg">
+      <select (change)="doEditorCommand('formatBlock', $event.target.value)" class="text-field in-wysiwyg" aria-label="Paragraph style selection">
         <option value="<h1>">Heading 1</option>
         <option value="<h2>">Heading 2</option>
         <option value="<h3>">Heading 3</option>
@@ -50,7 +50,7 @@
       </select>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('fontSize', $event.target.value)" class="text-field in-wysiwyg" style="width:64px;">
+      <select (change)="doEditorCommand('fontSize', $event.target.value)" class="text-field in-wysiwyg" style="width:64px;" aria-label="Font size selection">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -89,6 +89,6 @@
     </div>
   </div>
   <div class="flex-item with-editor">
-    <iframe #editor name="richTextEditor" id="richTextEditor"></iframe>
+    <iframe #editor name="richTextEditor" id="richTextEditor" title="Editor window"></iframe>
   </div>
 </div>
