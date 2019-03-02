@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Post } from '../_models/post'
 import { environment } from '../../environments/environment';
-
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +28,10 @@ export class PostsService {
 
   update(post: Post): Observable<Post> {
     return this.http.put<Post>(`${this.apiUrl}/posts/${post.id}`, post);
+  }
+
+  // TODO: map catch errors and success string
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/posts/${id}`);
   }
 }
