@@ -17,8 +17,17 @@
   z-index: 1;
   background-color: rgba(255, 255, 255, .6);
 }
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-container .material-icons {
+  display: inline-block;
+  font-size: 48px;
+}
 form h2 {
-  margin-top: 0px;
+  margin-top: 8px;
   text-align: center;
 }
 

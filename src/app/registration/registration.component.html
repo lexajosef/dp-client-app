@@ -1,6 +1,9 @@
 <div class="flex-container">
   <div class="login-container" [ngClass]="{ 'with-loading' : loading }">
     <form [formGroup]="regForm" (ngSubmit)="onRegistration()">
+      <div class="icon-container">
+        <i class="material-icons">accessibility_new</i>
+      </div>
       <h2>Create your account</h2>
       <div class="form-group">
         <label for="">Name</label>
