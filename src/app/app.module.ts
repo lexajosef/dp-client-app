@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
 import { HelpComponent } from './help/help.component';
 import { UsersComponent } from './users/users.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UsersComponent } from './users/users.component';
     HomeComponent,
     EditorComponent,
     HelpComponent,
-    UsersComponent
+    UsersComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

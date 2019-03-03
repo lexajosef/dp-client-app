@@ -30,7 +30,6 @@ export class PostsService {
     return this.http.put<Post>(`${this.apiUrl}/posts/${post.id}`, post);
   }
 
-  // TODO: map catch errors and success string
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/posts/${id}`);
   }
