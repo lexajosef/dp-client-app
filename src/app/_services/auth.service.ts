@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,7 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
-  getUserTokenPayload(): any {
+  getUserTokenPayload(): User {
     return jwtDecode(this.getUserToken());
   }
 

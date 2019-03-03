@@ -87,6 +87,19 @@ hr {
 .btn.btn-transparent:focus {
   background-color: rgba(var(--main-color-rgb), .1);
 }
+
+.btn.btn-light {
+  background-color: rgba(var(--main-color-rgb), .08);
+  color: rgb(0, 0, 0);
+}
+.btn.btn-light:hover {
+  background-color: rgba(var(--main-color-rgb), .16);
+}
+.btn.btn-light:focus {
+  background-color: rgba(var(--main-color-rgb), .24);
+}
+
+
 a.btn {
   display: inline-block;
   line-height: 36px;

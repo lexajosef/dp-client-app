@@ -1,5 +1,29 @@
 <div class="padding-container">
   <h2>
-    Home component
+    Welcome back {{userName}}!
   </h2>
+  
+  <section class="actions">
+    <a class="btn btn-blue" routerLink="/editor">Create new post</a>
+  </section>
+
+  <h3 id="yourPosts" aria-hidden="true">Your posts</h3>
+  <section class="cards" aria-labelledby="yourPosts">
+    <div *ngFor="let post of userPosts" class="card" tabindex="0">
+      <h4>{{post.dateOfCreation | date:'MMM d, yyyy, h:mm a'}}</h4>
+      <h3>{{post.title}}</h3>
+      <span>Seen by 21 users.</span><br>
+      <a class="btn btn-light" routerLink="/editor">Edit post</a>
+    </div> 
+  </section>
+
+  <h3 id="latestPosts" aria-hidden="true">Latest posts</h3>
+  <section class="cards" aria-labelledby="latestPosts">
+    <div class="card" tabindex="0">
+      <!-- TODO: ng for through latest posts -->
+      <h4>Josef Lexa - 01.03. 10:32 PM</h4>
+      <h3>Our first outdoor trip</h3>
+      <span>Seen by 21 users.</span>
+    </div>
+  </section>
 </div>
