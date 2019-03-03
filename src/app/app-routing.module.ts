@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { EditorComponent } from './editor/editor.component';
 import { HelpComponent } from './help/help.component';
 import { UsersComponent } from './users/users.component';
+import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'editor', canActivate: [AuthGuard], component: EditorComponent },
   { path: 'help', canActivate: [AuthGuard], component: HelpComponent },
   { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
+  { path: 'posts', canActivate: [AuthGuard], component: PostsComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
