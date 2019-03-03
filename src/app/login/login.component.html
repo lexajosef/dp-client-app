@@ -2,7 +2,7 @@
   <div class="login-container" [ngClass]="{ 'with-loading' : loading }">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="icon-container">
-        <i class="material-icons">accessibility_new</i>
+        <i class="material-icons" aria-hidden="true">accessibility_new</i>
       </div>
       <h2>Sign in</h2>
       <div class="form-group">
