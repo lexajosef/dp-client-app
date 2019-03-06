@@ -22,6 +22,10 @@ export class PostsService {
     return this.http.get<Post[]>(`${this.apiUrl}/users/${userId}/posts`);
   }
 
+  getLatestPosts(limit: number, offset: number): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.apiUrl}/posts?limit=${limit}&offset=${offset}&order=desc`);
+  }
+
   getById(id: number): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/posts/${id}`);
   }

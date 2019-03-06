@@ -3,27 +3,31 @@
     Welcome back {{userName}}!
   </h2>
   
-  <section class="actions">
+  <div class="actions">
     <a class="btn btn-blue" routerLink="/editor">Create new post</a>
-  </section>
+  </div>
 
   <h3 id="yourPosts" aria-hidden="true">Your posts</h3>
   <section class="cards" aria-labelledby="yourPosts">
-    <div *ngFor="let post of userPosts" class="card" tabindex="0">
+    <div *ngFor="let post of userPosts" (click)="redirectToPost($event, post.id)" (keydown)="redirectToPost($event, post.id)" 
+        class="card" tabindex="0" [attr.aria-label]="post.title">
       <h4>{{post.dateOfCreation | date:'MMM d, yyyy, h:mm a'}}</h4>
       <h3>{{post.title}}</h3>
-      <span>Seen by 21 users.</span><br>
+      <span *ngIf="post.comments.length > 0">{{post.comments.length}} times commented.</span>
+      <span *ngIf="post.comments.length == 0">Not yet commented by any user.</span>
+      <br>
       <a class="btn btn-light" routerLink="/editor">Edit post</a>
     </div> 
   </section>
 
   <h3 id="latestPosts" aria-hidden="true">Latest posts</h3>
   <section class="cards" aria-labelledby="latestPosts">
-    <div class="card" tabindex="0">
-      <!-- TODO: ng for through latest posts -->
-      <h4>Josef Lexa - 01.03. 10:32 PM</h4>
-      <h3>Our first outdoor trip</h3>
-      <span>Seen by 21 users.</span>
+    <div *ngFor="let post of latestPosts" (click)="redirectToPost($event, post.id)" (keydown)="redirectToPost($event, post.id)" 
+        class="card" tabindex="0" [attr.aria-label]="post.title">
+      <h4>{{post.userName}} - {{post.dateOfCreation | date:'MMM d, yyyy, h:mm a'}}</h4>
+      <h3>{{post.title}}</h3>
+      <span *ngIf="post.comments.length > 0">{{post.comments.length}} times commented.</span>
+      <span *ngIf="post.comments.length == 0">Not yet commented by any user.</span>
     </div>
   </section>
 </div>
