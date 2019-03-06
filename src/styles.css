@@ -25,6 +25,12 @@ hr {
   height: 100vh;
 }
 
+.flex-centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .padding-container {
   padding: 0 16px;
 }
@@ -98,7 +104,6 @@ hr {
 .btn.btn-light:focus {
   background-color: rgba(var(--main-color-rgb), .24);
 }
-
 
 a.btn {
   display: inline-block;

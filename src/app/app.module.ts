@@ -20,6 +20,7 @@ import { EditorComponent } from './editor/editor.component';
 import { HelpComponent } from './help/help.component';
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PostsComponent } from './posts/posts.component';
     EditorComponent,
     HelpComponent,
     UsersComponent,
-    PostsComponent
+    PostsComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

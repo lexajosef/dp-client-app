@@ -13,6 +13,7 @@ import { EditorComponent } from './editor/editor.component';
 import { HelpComponent } from './help/help.component';
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostComponent } from './post/post.component'; 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'help', canActivate: [AuthGuard], component: HelpComponent },
   { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
   { path: 'posts', canActivate: [AuthGuard], component: PostsComponent },
+  { path: 'post/:postId', canActivate: [AuthGuard], component: PostComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
