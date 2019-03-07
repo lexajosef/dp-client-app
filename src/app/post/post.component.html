@@ -1,10 +1,10 @@
 <div class="padding-container">
   <section class="flex-centering" aria-label="article">
+    <div class="title" *ngIf="post">
+      <h2>{{post.title}}</h2>
+      <span>{{post.userName}} - {{post.dateOfModification | date:'MMM d, yyyy, h:mm a'}}</span>
+    </div>
     <div class="article">
-      <div *ngIf="post">
-        <h2>{{post.title}}</h2>
-        <span>{{post.userName}} - {{post.dateOfModification | date:'MMM d, yyyy, h:mm a'}}</span>
-      </div>
       <div #article></div>
     </div>
   </section>

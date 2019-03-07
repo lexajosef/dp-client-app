@@ -1,6 +1,25 @@
 .padding-container {
   background-color: rgba(0, 0, 0, .06);
   min-height: 100%;
+  box-sizing: border-box;
+  padding-top: 16px;
+}
+
+.flex-centering {
+  flex-direction: column;
+}
+
+.title {
+  width: 800px;
+}
+.title h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+.title span {
+  color: rgba(0, 0, 0, .54);
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .article {
@@ -14,12 +33,10 @@
   margin: 16px;
   background-color: rgb(255, 255, 255);
 }
-h2 {
-  margin-top: 0;
-  margin-bottom: 4px;
-}
-span {
-  color: rgba(0, 0, 0, .54);
-  font-size: 14px;
-  font-weight: 600;
+
+@media only screen and (max-width: 1100px) {
+  .title,
+  .article {
+    width: 100%;
+  }
 }
