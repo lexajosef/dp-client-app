@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { PostsService } from '../_services/posts.service';
@@ -38,10 +38,7 @@ export class PostComponent implements OnInit, OnDestroy {
   }
 
   generatePost() {
-    this.article.nativeElement.innerHTML = `
-      <h2>${this.post.title}</h2>
-      ${this.post.html}
-    `;
+    this.article.nativeElement.innerHTML = this.post.html;
   }
 
 }
