@@ -31,7 +31,13 @@ export class PostsService {
   }
 
   update(post: Post): Observable<Post> {
-    return this.http.put<Post>(`${this.apiUrl}/posts/${post.id}`, post);
+    // API allow only these two parameters
+    const body = {
+      'title': post.title,
+      'html': post.html
+    };
+
+    return this.http.put<Post>(`${this.apiUrl}/posts/${post.id}`, body);
   }
 
   delete(id: number): Observable<any> {

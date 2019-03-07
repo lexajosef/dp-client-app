@@ -3,11 +3,11 @@
     <h2>Editor component</h2>
   </div>
   <div class="flex-item posts-btns">
-    <button class="btn btn-blue">
-      <i class="material-icons">save</i>Save
+    <button class="btn btn-blue" (click)="savePost()">
+      <i class="material-icons" aria-hidden="true">save</i>Save
     </button>
-    <button class="btn btn-transparent">
-      <i class="material-icons">delete</i>Delete
+    <button class="btn btn-transparent" (click)="deletePost()">
+      <i class="material-icons" aria-hidden="true">delete</i>Delete
     </button>
   </div>
   <div #toolbar class="flex-item editor-btns">

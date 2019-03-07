@@ -16,7 +16,7 @@
       <span *ngIf="post.comments.length > 0">{{post.comments.length}} times commented.</span>
       <span *ngIf="post.comments.length == 0">Not yet commented by any user.</span>
       <br>
-      <a class="btn btn-light" routerLink="/editor">Edit post</a>
+      <a class="btn btn-light" [routerLink]="'/editor/'+post.id">Edit post</a>
     </div>
   </section>
 

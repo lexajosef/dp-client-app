@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PostsService } from '../_services/posts.service';
+import { Post } from '../_models/post';
 import * as KeyCodes from 'keycode-js';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-editor',
@@ -11,17 +15,42 @@ export class EditorComponent implements OnInit {
   @ViewChild('editor') editor: ElementRef;
   @ViewChild('toolbar') toolbar: ElementRef;
 
-  constructor() { }
+  editedPost: Post;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private postsService: PostsService) { }
 
   ngOnInit() {
+    const params = this.route.snapshot.params;
+
     this.editorDocument.designMode = 'on';
     this.addStylesToEditor();
     this.focusEditor();
     this.editorKeyboardOperability();
+
+    if (params.postId) {
+      this.loadPostForEdit(params.postId);
+    }
   }
 
   get editorDocument(): any { return (<any> this.editor.nativeElement).contentDocument }
   get toolbarElement(): HTMLElement { return this.toolbar.nativeElement }
+
+  private loadPostForEdit(postId: number) {
+    this.postsService.getById(postId).subscribe(
+      post => {
+        this.editedPost = post;
+        this.editorDocument.body.innerHTML = post.html;
+        // TODO: set title of document
+      },
+      error => { 
+        alert(error); // TODO: call this through alert component
+        this.router.navigate(['/home']);
+      }
+    );
+  }
 
   private addStylesToEditor() {
     let linkRobotoFont: HTMLLinkElement = this.editorDocument.createElement('link');
@@ -164,6 +193,36 @@ export class EditorComponent implements OnInit {
   createLinkCommand() {
     const url: string = prompt('Enter a link URL', 'https://');
     this.doEditorCommand('createLink', url);
+  }
+
+  private createPost() {
+    this.postsService.create({
+      'title': 'test title',
+      'html': this.editorDocument.body.innerHTML
+    })
+      .subscribe(createdPost => this.editedPost = createdPost);
+  }
+
+  private updatePost() {
+    this.editedPost.title = 'test title';
+    this.editedPost.html = this.editorDocument.body.innerHTML;
+
+    this.postsService.update(this.editedPost)
+      .subscribe(updatedPost => this.editedPost = updatedPost);
+  }
+
+  savePost() {
+    if (!this.editedPost) {
+      this.createPost();
+    } else {
+      this.updatePost();
+    }
+  }
+
+  deletePost() {
+    // TODO: call confirmation service
+
+    // TODO: delete post after confirm
   }
 
 }
