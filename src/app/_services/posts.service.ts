@@ -41,6 +41,6 @@ export class PostsService {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/posts/${id}`);
+    return this.http.delete(`${this.apiUrl}/posts/${id}`, {responseType: 'text'});
   }
 }

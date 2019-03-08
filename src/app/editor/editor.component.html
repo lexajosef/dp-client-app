@@ -3,10 +3,13 @@
     <h2>Editor component</h2>
   </div>
   <div class="flex-item posts-btns">
-    <button class="btn btn-blue" (click)="savePost()">
-      <i class="material-icons" aria-hidden="true">save</i>Save
+    <button class="btn btn-blue" id="btnSaveAndClose" (click)="savePost(true)" disabled>
+      <i class="material-icons" aria-hidden="true">save</i>Save and close
     </button>
-    <button class="btn btn-transparent" (click)="deletePost()">
+    <button class="btn btn-blue" id="btnSave" (click)="savePost(false)" disabled>
+      <i class="material-icons" aria-hidden="true">sync</i>Save
+    </button>
+    <button class="btn btn-danger" (click)="deletePost()">
       <i class="material-icons" aria-hidden="true">delete</i>Delete
     </button>
   </div>

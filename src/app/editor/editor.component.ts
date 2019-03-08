@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../_services/posts.service';
 import { Post } from '../_models/post';
 import * as KeyCodes from 'keycode-js';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editor',
@@ -160,6 +160,8 @@ export class EditorComponent implements OnInit {
 
       event.preventDefault();
     }
+    document.querySelector('#btnSaveAndClose').removeAttribute('disabled');
+    document.querySelector('#btnSave').removeAttribute('disabled');
   }
 
   private editorKeyboardOperability() {
@@ -195,34 +197,48 @@ export class EditorComponent implements OnInit {
     this.doEditorCommand('createLink', url);
   }
 
-  private createPost() {
+  private createPost(closeAfterCreate: boolean) {
     this.postsService.create({
       'title': 'test title',
       'html': this.editorDocument.body.innerHTML
     })
-      .subscribe(createdPost => this.editedPost = createdPost);
+      .subscribe(createdPost => {
+        this.editedPost = createdPost;
+        if (closeAfterCreate) {
+          this.router.navigate(['/home']);
+        }
+      });
   }
 
-  private updatePost() {
+  private updatePost(closeAfterUpdate: boolean) {
     this.editedPost.title = 'test title';
     this.editedPost.html = this.editorDocument.body.innerHTML;
 
     this.postsService.update(this.editedPost)
-      .subscribe(updatedPost => this.editedPost = updatedPost);
+      .subscribe(updatedPost => {
+        this.editedPost = updatedPost;
+        if (closeAfterUpdate) {
+          this.router.navigate(['/home']);
+        }
+      });
   }
 
-  savePost() {
+  savePost(closeAfterSave: boolean) {
     if (!this.editedPost) {
-      this.createPost();
+      this.createPost(closeAfterSave);
     } else {
-      this.updatePost();
+      this.updatePost(closeAfterSave);
     }
+
+    document.querySelector('#btnSaveAndClose').setAttribute('disabled', '');
+    document.querySelector('#btnSave').setAttribute('disabled', '');
   }
 
   deletePost() {
-    // TODO: call confirmation service
-
-    // TODO: delete post after confirm
+    if (confirm("Are you sure to delete this post?")) {
+      this.postsService.delete(this.editedPost.id)
+        .subscribe(() => this.router.navigate(['/home']));
+    }
   }
 
 }

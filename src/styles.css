@@ -53,6 +53,9 @@ hr {
   outline: 0px;
   user-select: none;
 }
+.btn:disabled {
+  cursor: default !important;
+}
 .btn.btn-primary {
   background-color: rgb(var(--main-color-rgb));
   color: rgb(255, 255, 255);
@@ -62,6 +65,9 @@ hr {
 }
 .btn.btn-primary:focus {
   background-color: rgba(var(--main-color-rgb), .8);
+}
+.btn.btn-primary:disabled {
+  background-color: rgba(var(--main-color-rgb), .5);
 }
 .btn.btn-blue {
   background-color: rgb(26, 115, 232);
@@ -73,9 +79,24 @@ hr {
 .btn.btn-blue:focus {
   background-color: rgba(26, 115, 232, .8);
 }
+.btn.btn-blue:disabled {
+  background-color: rgba(26, 115, 232, .5);
+}
+.btn.btn-danger {
+  background-color: rgb(217, 48, 37);
+  color: rgb(255, 255, 255);
+}
+.btn.btn-danger:hover {
+  background-color: rgba(217, 48, 37, .9);
+}
+.btn.btn-danger:focus {
+  background-color: rgba(217, 48, 37, .8);
+}
+.btn.btn-danger:disabled {
+  background-color: rgba(217, 48, 37, .5);
+}
 .btn .material-icons {
   margin-right: 4px;
-  /* font-size: 20px; */
 }
 
 .btn:hover,
