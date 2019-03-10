@@ -20,7 +20,7 @@
     </div>
   </section>
 
-  <h3 id="latestPosts" aria-hidden="true">Latest posts</h3>
+  <h3 id="latestPosts" aria-hidden="true">Latest posts from other users</h3>
   <section class="cards" aria-labelledby="latestPosts">
     <div *ngFor="let post of latestPosts" (click)="redirectToPost($event, post.id)" (keydown)="redirectToPost($event, post.id)" 
         class="card" tabindex="0" [attr.aria-label]="post.title">

@@ -18,8 +18,13 @@ export class PostsService {
     return this.http.post<Post>(`${this.apiUrl}/posts`, post);
   }
   
-  getAllByUserId(userId: number): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.apiUrl}/users/${userId}/posts`);
+  getAllByUserId(userId: number, orderDesc: boolean): Observable<Post[]> {
+    let url = `${this.apiUrl}/users/${userId}/posts`;
+    if (orderDesc) {
+      url = `${url}?order=desc`;
+    }
+
+    return this.http.get<Post[]>(url);
   }
 
   getLatestPosts(limit: number, offset: number): Observable<Post[]> {

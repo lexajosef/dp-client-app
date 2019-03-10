@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   getUserPosts() {
-    this.postsService.getAllByUserId(this.authService.getUserTokenPayload().id)
+    this.postsService.getAllByUserId(this.authService.getUserTokenPayload().id, true)
       .subscribe(posts => this.userPosts = posts);
   }
 
