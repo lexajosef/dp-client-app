@@ -9,13 +9,13 @@
 
   <h3 id="yourPosts" aria-hidden="true">Your posts</h3>
   <section class="cards" aria-labelledby="yourPosts">
-    <app-card *ngFor="let post of userPosts" [post]="post">
+    <ui-card *ngFor="let post of userPosts" [post]="post">
       <a class="btn btn-light" [routerLink]="'/editor/'+post.id">Edit post</a>
-    </app-card>
+    </ui-card>
   </section>
 
   <h3 id="latestPosts" aria-hidden="true">Latest posts from other users</h3>
   <section class="cards" aria-labelledby="latestPosts">
-    <app-card *ngFor="let post of latestPosts" [post]="post"></app-card>
+    <ui-card *ngFor="let post of latestPosts" [post]="post"></ui-card>
   </section>
 </div>

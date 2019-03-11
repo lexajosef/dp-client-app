@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import * as KeyCodes from 'keycode-js';
 
 @Component({
-  selector: 'app-card',
+  selector: 'ui-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
