@@ -17,7 +17,7 @@
   padding: 16px;
   outline: 0px;
 }
-.card:hover{
+.card:hover {
   border: 1px solid rgb(var(--main-color-rgb));
   cursor: pointer;
 }
@@ -40,7 +40,7 @@
   font-size: 14px;  
 }
 .card .btn {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 @media only screen and (max-width: 1600px) {
