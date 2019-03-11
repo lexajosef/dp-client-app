@@ -9,25 +9,13 @@
 
   <h3 id="yourPosts" aria-hidden="true">Your posts</h3>
   <section class="cards" aria-labelledby="yourPosts">
-    <div *ngFor="let post of userPosts" (click)="redirectToPost($event, post.id)" (keydown)="redirectToPost($event, post.id)" 
-        class="card" tabindex="0" [attr.aria-label]="post.title">
-      <h4>{{post.dateOfModification | date:'MMM d, yyyy, h:mm a'}}</h4>
-      <h3>{{post.title}}</h3>
-      <span *ngIf="post.comments.length > 0">{{post.comments.length}} times commented.</span>
-      <span *ngIf="post.comments.length == 0">Not yet commented by any user.</span>
-      <br>
+    <app-card *ngFor="let post of userPosts" [post]="post">
       <a class="btn btn-light" [routerLink]="'/editor/'+post.id">Edit post</a>
-    </div>
+    </app-card>
   </section>
 
   <h3 id="latestPosts" aria-hidden="true">Latest posts from other users</h3>
   <section class="cards" aria-labelledby="latestPosts">
-    <div *ngFor="let post of latestPosts" (click)="redirectToPost($event, post.id)" (keydown)="redirectToPost($event, post.id)" 
-        class="card" tabindex="0" [attr.aria-label]="post.title">
-      <h4>{{post.userName}} - {{post.dateOfModification | date:'MMM d, yyyy, h:mm a'}}</h4>
-      <h3>{{post.title}}</h3>
-      <span *ngIf="post.comments.length > 0">{{post.comments.length}} times commented.</span>
-      <span *ngIf="post.comments.length == 0">Not yet commented by any user.</span>
-    </div>
+    <app-card *ngFor="let post of latestPosts" [post]="post"></app-card>
   </section>
 </div>

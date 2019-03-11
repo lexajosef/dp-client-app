@@ -21,6 +21,7 @@ import { HelpComponent } from './help/help.component';
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PostComponent } from './post/post.component';
     HelpComponent,
     UsersComponent,
     PostsComponent,
-    PostComponent
+    PostComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
