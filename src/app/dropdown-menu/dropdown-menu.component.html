@@ -1,0 +1,14 @@
+<div class="dropdown-btn-container">
+  <button [class]="btnStyleClass" id="menuBtn"
+      aria-label="Dropdown menu of items"   
+      aria-controls="menu"
+      aria-haspopup="true" 
+      aria-expanded="false">
+    {{title}}
+  </button>
+  <ul class="dropdown-menu" id="menu" role="menu" aria-labelledby="menuBtn">
+    <li *ngFor="let item of items" role="none">
+      <a class="dropdown-item" [routerLink]="item.href" role="menuitem">{{item.label}}</a>
+    </li>
+  </ul>
+</div>

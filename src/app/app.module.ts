@@ -22,7 +22,8 @@ import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
 import { CardComponent } from './card/card.component';
-import { DropdownBtnComponent } from './dropdown-btn/dropdown-btn.component';
+import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DropdownBtnComponent } from './dropdown-btn/dropdown-btn.component';
     PostsComponent,
     PostComponent,
     CardComponent,
-    DropdownBtnComponent
+    DropdownMenuComponent,
+    MenuItemComponent
   ],
   imports: [
     BrowserModule,
