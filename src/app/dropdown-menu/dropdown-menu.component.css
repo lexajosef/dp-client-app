@@ -1,5 +1,6 @@
 .dropdown-btn-container {
   display: inline-block;
+  margin: 0 8px;
 }
 #menuBtn::after {
   display: inline-block;
@@ -28,7 +29,7 @@ ul.dropdown-menu.opened {
   margin: 0;
   padding: 8px 0;
   flex-direction: column;
-  z-index: 10;
+  z-index: 3;
 }
 ul.dropdown-menu li {
   height: 48px;
@@ -50,4 +51,16 @@ ul.dropdown-menu a.dropdown-item:focus {
 }
 ul.dropdown-menu a.dropdown-item:active {
   background-color: rgba(0,0,0,.12);
+}
+
+/* CSS RESET */
+a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+  color: inherit;
 }
