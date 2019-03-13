@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../_models/post';
 import { Router } from '@angular/router';
 
-import * as KeyCodes from 'keycode-js';
+import * as KEYCODES from 'keycode-js';
 
 @Component({
   selector: 'ui-card',
@@ -19,8 +19,8 @@ export class CardComponent implements OnInit {
   ngOnInit() { }
 
   redirectToPost(event: any, postId: number) {
-    // Note: KeyCodes.KEY_RETURN === ENTER key
-    if (event.type === 'click' || (event.type === 'keydown' && event.keyCode === KeyCodes.KEY_RETURN)) {
+    // Note: KEYCODES.KEY_RETURN === ENTER key
+    if (event.type === 'click' || (event.type === 'keydown' && event.keyCode === KEYCODES.KEY_RETURN)) {
       if (event.ctrlKey) {
         window.open(`${window.location.origin}/post/${postId}`);
         return;

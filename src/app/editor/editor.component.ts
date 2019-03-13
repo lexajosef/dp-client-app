@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../_services/posts.service';
 import { Post } from '../_models/post';
-import * as KeyCodes from 'keycode-js';
-import { first } from 'rxjs/operators';
+import * as KEYCODES from 'keycode-js';
 
 @Component({
   selector: 'app-editor',
@@ -90,11 +89,11 @@ export class EditorComponent implements OnInit {
     // Alt + Shift shortcuts
     switch (keyCode) {
       // focus toolbar
-      case KeyCodes.KEY_T:
+      case KEYCODES.KEY_T:
         this.toolbarElement.focus();
         break;
       // focus editor
-      case KeyCodes.KEY_E:
+      case KEYCODES.KEY_E:
         this.focusEditor();
         break;
     }
@@ -107,7 +106,7 @@ export class EditorComponent implements OnInit {
 
     switch (event.keyCode) {
       // navigate to next control
-      case KeyCodes.KEY_RIGHT:
+      case KEYCODES.KEY_RIGHT:
         sibling = document.activeElement.nextElementSibling;
         if (sibling) {
           sibling.focus();
@@ -120,7 +119,7 @@ export class EditorComponent implements OnInit {
         event.preventDefault();
         break;
       // navigate to previous control
-      case KeyCodes.KEY_LEFT:
+      case KEYCODES.KEY_LEFT:
         sibling = document.activeElement.previousSibling;
         if (sibling) {
           sibling.focus();
@@ -133,7 +132,7 @@ export class EditorComponent implements OnInit {
         event.preventDefault();
         break;
       // tab key stuff
-      case KeyCodes.KEY_TAB:
+      case KEYCODES.KEY_TAB:
         if (!event.shiftKey) {
           this.focusEditor();
           event.preventDefault();
@@ -152,7 +151,7 @@ export class EditorComponent implements OnInit {
   }
 
   private onEditorKeyDown(event: KeyboardEvent) {
-    if (event.altKey && event.shiftKey && event.keyCode === KeyCodes.KEY_T) {
+    if (event.altKey && event.shiftKey && event.keyCode === KEYCODES.KEY_T) {
       const forFocus: HTMLElement = document.querySelector('.editor-btns button');
       if (forFocus) {
         forFocus.focus();

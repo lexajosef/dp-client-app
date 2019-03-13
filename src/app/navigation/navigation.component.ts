@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as KeyCodes from 'keycode-js';
+import * as KEYCODES from 'keycode-js';
 
 import { AuthService } from '../_services/auth.service';
 import { NavigationUIService } from '../_services/navigation-ui.service';
@@ -77,7 +77,7 @@ export class NavigationComponent implements OnInit {
 
   onDrawerKeyDown(event: any) {
     // close drawer on ESC key on smaller window width
-    if (event.keyCode === KeyCodes.KEY_ESCAPE && window.innerWidth < this.navigationUIService.widthLimit) {
+    if (event.keyCode === KEYCODES.KEY_ESCAPE && window.innerWidth < this.navigationUIService.widthLimit) {
       this.navigationUIService.setAsideNavVisible(false);
       this.setInertOnMenuClose();
 
