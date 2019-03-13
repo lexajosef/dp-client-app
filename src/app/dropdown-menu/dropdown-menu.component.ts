@@ -57,7 +57,7 @@ export class DropdownMenuComponent implements AfterContentInit, AfterViewInit, A
 
   onMenuClick(ev: MouseEvent) {
     this.isMenuOpen ? this.closeMenu() : this.openMenu();
-    event.stopPropagation();
+    ev.stopPropagation(); // do not propagate event, it would be caught in window click event
   }
 
   onMenuKeydown(ev: KeyboardEvent) {
