@@ -24,6 +24,7 @@ import { PostComponent } from './post/post.component';
 import { CardComponent } from './card/card.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
     PostComponent,
     CardComponent,
     DropdownMenuComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
