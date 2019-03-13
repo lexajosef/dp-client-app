@@ -15,6 +15,7 @@ export class DropdownMenuComponent implements AfterContentInit, AfterViewInit, A
   @Input() title: string;
   @Input() icon: string;
   @Input() btnStyleClass: string;
+  @Input() menuPosition: string;
 
   @ViewChild('menuButton') menuButtonRef: ElementRef;
   @ViewChild('menu') menuRef: ElementRef;

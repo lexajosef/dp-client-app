@@ -6,7 +6,7 @@
       [attr.aria-expanded]="isMenuOpen">
     <i class="material-icons" aria-hidden="true">{{icon}}</i>{{title}}
   </button>
-  <ul #menu (keydown)="menuKeyboardAccessibility($event)" [class.opened]="isMenuOpen" 
+  <ul #menu (keydown)="menuKeyboardAccessibility($event)" [class.opened]="isMenuOpen" [class.right]="menuPosition === 'right'"
       class="dropdown-menu" id="menu" role="menu" aria-labelledby="menuBtn">
     <li *ngFor="let item of items" role="none">
       <a #linkRef class="dropdown-item" [routerLink]="item.href" role="menuitem">{{item.label}}</a>
