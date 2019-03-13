@@ -1,10 +1,10 @@
 <div class="dropdown-btn-container">
-  <button #menuButton (click)="onMenuClick()" (keydown)="onMenuKeydown($event)" [class]="btnStyleClass" id="menuBtn"
+  <button #menuButton (click)="onMenuClick($event)" (keydown)="onMenuKeydown($event)" [class]="btnStyleClass" id="menuBtn"
       aria-label="Dropdown menu of items"   
       aria-controls="menu"
       aria-haspopup="true" 
       [attr.aria-expanded]="isMenuOpen">
-    {{title}}
+    <i class="material-icons" aria-hidden="true">{{icon}}</i>{{title}}
   </button>
   <ul #menu (keydown)="menuKeyboardAccessibility($event)" [class.opened]="isMenuOpen" 
       class="dropdown-menu" id="menu" role="menu" aria-labelledby="menuBtn">

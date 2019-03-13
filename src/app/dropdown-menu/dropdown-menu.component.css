@@ -2,7 +2,7 @@
   display: inline-block;
   margin: 0 8px;
 }
-#menuBtn::after {
+.btn.show-arrow::after {
   display: inline-block;
   width: 0;
   height: 0;

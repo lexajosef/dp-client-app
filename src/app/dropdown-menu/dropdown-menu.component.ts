@@ -13,6 +13,7 @@ export class DropdownMenuComponent implements AfterContentInit, AfterViewInit, A
   @ContentChildren(MenuItemComponent) menuItems: QueryList<MenuItemComponent>;
 
   @Input() title: string;
+  @Input() icon: string;
   @Input() btnStyleClass: string;
 
   @ViewChild('menuButton') menuButtonRef: ElementRef;
@@ -54,8 +55,9 @@ export class DropdownMenuComponent implements AfterContentInit, AfterViewInit, A
     }
   }
 
-  onMenuClick() {
+  onMenuClick(ev: MouseEvent) {
     this.isMenuOpen ? this.closeMenu() : this.openMenu();
+    event.stopPropagation();
   }
 
   onMenuKeydown(ev: KeyboardEvent) {
