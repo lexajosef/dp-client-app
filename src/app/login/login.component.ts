@@ -72,11 +72,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['']);
         },
         err => {
-          if (err.status === 400) {
-            this.errorMsg = 'Invalid email or password.';
+          if (typeof(err) !== 'object') {
+            this.errorMsg = err;
             this.emailEl.nativeElement.focus();
           } else {
-            this.errorMsg = 'The remote server is not responding.';
+            // server return some error object, unknown error
+            this.errorMsg = 'Server error or server is not responding.';
           }
           
           this.submitted = false;
