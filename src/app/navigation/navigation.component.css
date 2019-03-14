@@ -84,14 +84,14 @@
 .drawer--drawer {
   border-left: 0;
   border-right: 1px solid #e4e4e4;
-  left: -320px;
+  left: -256px;
   top: 0;
   right: initial;
   height: 100%;
   display: inline-flex;
   flex-direction: column;
   box-sizing: border-box;
-  width: 320px;
+  width: 256px;
   overflow: hidden;
   touch-action: none; 
   background: white;
