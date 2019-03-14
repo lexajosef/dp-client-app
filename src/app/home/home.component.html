@@ -13,9 +13,13 @@
     <ui-menu-item (click)="orderUserPosts(false)" label="Modified (oldest)"></ui-menu-item>
   </ui-dropdown-menu>
   <section class="cards" aria-labelledby="yourPosts">
-    <ui-card *ngFor="let post of userPosts" [post]="post">
+    <ui-card *ngFor="let post of postsToView" [post]="post">
       <a class="btn btn-light" [routerLink]="'/editor/'+post.id">Edit post</a>
     </ui-card>
+    <div *ngIf="allUserPosts && postsToView && allUserPosts.length > postsToView.length" (click)="showMorePosts($event)" (keydown)="showMorePosts($event)"
+        class="card middle" tabindex="0" aria-label="Show more posts...">
+      <h3 class="showmore">Show more posts...</h3>
+    </div>
   </section>
 
   <h3 id="latestPosts" aria-hidden="true">Latest posts from other users</h3>
