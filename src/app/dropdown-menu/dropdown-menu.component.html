@@ -9,7 +9,8 @@
   <ul #menu (keydown)="menuKeyboardAccessibility($event)" [class.opened]="isMenuOpen" [class.right]="menuPosition === 'right'"
       class="dropdown-menu" id="menu" role="menu" aria-labelledby="menuBtn">
     <li *ngFor="let item of items" role="none">
-      <a #linkRef class="dropdown-item" [routerLink]="item.href" role="menuitem">{{item.label}}</a>
+      <!-- NOTE: link can have href or click function, but bind both, if link dont have href it binds actual route to routerLink -->
+      <a #linkRef (click)="item.onLinkClick()" [routerLink]="item.href" class="dropdown-item" role="menuitem">{{item.label}}</a>
     </li>
   </ul>
 </div>

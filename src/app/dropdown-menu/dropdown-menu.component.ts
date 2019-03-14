@@ -107,6 +107,7 @@ export class DropdownMenuComponent implements AfterContentInit, AfterViewInit, A
         } else {
           this.links[this.getActiveItemIndex() - 1].focus();
         }
+        ev.preventDefault();
         break;
     
       // focus next item or wrapping to the first one
@@ -116,16 +117,19 @@ export class DropdownMenuComponent implements AfterContentInit, AfterViewInit, A
         } else {
           this.links[this.getActiveItemIndex() + 1].focus();
         }
+        ev.preventDefault();
         break;
 
       // focus first item
       case KEYCODES.KEY_HOME:
         this.links[0].focus();
+        ev.preventDefault();
         break;
       
       // focus last item
       case KEYCODES.KEY_END:
         this.links[this.links.length - 1].focus();
+        ev.preventDefault();
         break;
     }
   }
