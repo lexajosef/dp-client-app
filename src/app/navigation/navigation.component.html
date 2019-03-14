@@ -6,7 +6,7 @@
     </section>
     <section class="top-app-bar--section align-right">
       <ui-dropdown-menu icon="person" aria-label="logout" btnStyleClass="top-app-bar--navigation-icon" menuPosition="right">
-        <ui-menu-item href="/logout" label="Logout"></ui-menu-item>
+        <ui-menu-item (click)="logout()" label="Logout"></ui-menu-item>
       </ui-dropdown-menu>
     </section>
   </div>  

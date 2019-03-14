@@ -90,4 +90,9 @@ export class NavigationComponent implements OnInit {
       this.headerEl.removeAttribute('inert');
     }
   }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }

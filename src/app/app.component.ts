@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './_services/auth.service';
 import { NavigationUIService } from './_services/navigation-ui.service';
