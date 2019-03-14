@@ -105,6 +105,7 @@ hr {
   cursor: pointer;
 }
 .btn.btn-transparent {
+  padding: 0;
   background-color: transparent;
   color: rgb(var(--main-color-rgb));
 }

@@ -21,12 +21,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.userName = this.authService.getUserTokenPayload().name;
-    this.getUserPosts();
+    this.getUserPosts(true);
     this.getLatestPosts();
   }
 
-  getUserPosts() {
-    this.postsService.getAllByUserId(this.authService.getUserTokenPayload().id, true)
+  getUserPosts(orderDesc: boolean) {
+    this.postsService.getAllByUserId(this.authService.getUserTokenPayload().id, orderDesc)
       .subscribe(posts => this.userPosts = posts);
   }
 
@@ -35,4 +35,7 @@ export class HomeComponent implements OnInit {
       .subscribe(posts => this.latestPosts = posts);
   }
 
+  orderUserPosts(desc: boolean) {
+    this.getUserPosts(desc);
+  }
 }

@@ -28,6 +28,7 @@ export class PostsService {
   }
 
   getLatestPosts(limit: number, offset: number): Observable<Post[]> {
+    // TODO: add withoutUser=id query param in REST API
     return this.http.get<Post[]>(`${this.apiUrl}/posts?limit=${limit}&offset=${offset}&order=desc`);
   }
 
