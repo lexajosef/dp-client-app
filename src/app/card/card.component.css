@@ -20,26 +20,26 @@
   box-shadow: 0 0 0px 1px rgb(var(--main-color-rgb));
 }
 
-h3 {
+.card h3 {
   margin: 0 0 4px 0;
   font-size: 20px;
   font-weight: 500;
 }
-h3.showmore {
+.card h3.showmore {
   color: rgba(0, 0, 0, .54);
 }
 
-h4 {
+.card h4 {
   margin: 0 0 4px 0;
   color: rgba(0, 0, 0, .54);
   font-size: 14px;
   font-weight: 500;
 }
 
-span {
+.card span {
   font-size: 14px;  
 }
 
-.content-placeholder {
+.card .content-placeholder {
   margin-top: 12px;
 }

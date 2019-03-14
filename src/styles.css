@@ -130,7 +130,7 @@ hr {
 a.btn {
   display: inline-block;
   line-height: 36px;
-  padding: 0 8px;
+  padding: 0 16px;
   text-decoration: none;
 }
 
