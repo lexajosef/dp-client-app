@@ -27,9 +27,13 @@ export class PostsService {
     return this.http.get<Post[]>(url);
   }
 
-  getLatestPosts(limit: number, offset: number): Observable<Post[]> {
-    // TODO: add withoutUser=id query param in REST API
-    return this.http.get<Post[]>(`${this.apiUrl}/posts?limit=${limit}&offset=${offset}&order=desc`);
+  getLatestPosts(limit: number, offset: number, withoutUser?: number): Observable<Post[]> {
+    let url = `${this.apiUrl}/posts?limit=${limit}&offset=${offset}&order=desc`;
+    if (withoutUser) {
+      url = `${url}&withoutUser=${withoutUser}`;
+    }
+
+    return this.http.get<Post[]>(url);
   }
 
   getById(id: number): Observable<Post> {

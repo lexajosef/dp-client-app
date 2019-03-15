@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   getLatestPosts() {
-    this.postsService.getLatestPosts(this.postToViewCount, 0)
+    this.postsService.getLatestPosts(this.postToViewCount, 0, this.authService.getUserTokenPayload().id)
       .subscribe(posts => this.latestPosts = posts);
   }
 
