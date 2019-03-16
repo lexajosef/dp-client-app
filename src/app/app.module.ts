@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 // Interceptors
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { LoaderInterceptor } from './_interceptors/loader.interceptor';
 
 // Components
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { PostComponent } from './post/post.component';
 import { CardComponent } from './card/card.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
     PostComponent,
     CardComponent,
     DropdownMenuComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
