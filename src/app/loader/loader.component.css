@@ -2,14 +2,13 @@
   visibility: hidden;
 }
 .loader-overlay {
-  position: fixed;
-  width: 100%;
   z-index: 100;
+  top: 0;
 }
 .loader {
   height: 4px;
   width: 100%;
-  position: relative;
+  position: fixed;
   overflow: hidden;
   background-color: #FFF;
 }
@@ -20,7 +19,7 @@
   left: -200px;
   width: 200px;
   height: 4px;
-  background-color: #3b78e7;
+  background-color: var(--main-loader-color);
   animation: loading 2s linear infinite;
 }
 @keyframes loading {
@@ -28,6 +27,6 @@
   50% {width: 30%;}
   70% {width: 70%;}
   80% {left: 50%;}
-  95% {left: 70%;}
+  95% {left: 130%;}
   to {left: 100%;}
 }

@@ -2,6 +2,7 @@
 :root {
   /* --main-color-rgb: 98, 0, 238; */
   --main-color-rgb: 36, 41, 46;
+  --main-loader-color: #3b78e7;
 }
 
 body {

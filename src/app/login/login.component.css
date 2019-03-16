@@ -59,13 +59,18 @@ form h2 {
   margin-right: 4px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {  
   .login-container {
     width: 100%;
     border: none;
     position: unset;
     padding: 20px;
   }
+  .login-container.with-loading::before {
+    margin-top: 4px;
+    height: calc(100% - 4px);
+  }
+
   .flex-container {
     height: unset; /* dont center form vertically */
   }
