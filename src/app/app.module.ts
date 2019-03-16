@@ -26,6 +26,7 @@ import { CardComponent } from './card/card.component';
 import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { LoaderComponent } from './loader/loader.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LoaderComponent } from './loader/loader.component';
     CardComponent,
     DropdownMenuComponent,
     MenuItemComponent,
-    LoaderComponent
+    LoaderComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
