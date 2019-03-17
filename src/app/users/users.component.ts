@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as KEYCODES from 'keycode-js';
 
 import { UserService } from '../_services/user.service';
 import { User } from '../_models/user';
 import { AuthService } from '../_services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
