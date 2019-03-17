@@ -1,3 +1,16 @@
-<p>
-  users works!
-</p>
+<div class="padding-container">
+  <h2>Users</h2>
+
+  <section class="cards" aria-label="Users. Select user to see profile.">
+    <div *ngFor="let user of users" class="user" [attr.aria-label]="user.name" (click)="redirectToUser($event, user.id)" 
+        (keydown)="redirectToUser($event, user.id)" tabindex="0">
+      <div class="icon">
+        <i class="material-icons" aria-hidden="true">person</i>
+      </div>
+      <div class="info">
+        <h3>{{user.name}}</h3>
+        <h4>{{user.email}}</h4>
+      </div>
+    </div>
+</section>
+</div>

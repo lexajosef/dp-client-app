@@ -14,6 +14,7 @@ import { HelpComponent } from './help/help.component';
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
   { path: 'posts', canActivate: [AuthGuard], component: PostsComponent },
   { path: 'post/:postId', canActivate: [AuthGuard], component: PostComponent },
+  { path: 'user/:userId', canActivate: [AuthGuard], component: UserComponent },
   { path: '**', redirectTo: 'home' }
 ];
 

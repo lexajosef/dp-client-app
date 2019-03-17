@@ -1,0 +1,44 @@
+.user {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e4e4e4;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 16px;
+  outline: 0px;
+  user-select: none;
+}
+.user:hover {
+  border: 1px solid rgb(var(--main-color-rgb));
+  cursor: pointer;
+}
+.user:focus {
+  border: 1px solid rgb(var(--main-color-rgb));
+  box-shadow: 0 0 0px 1px rgb(var(--main-color-rgb));
+}
+
+.user .icon {
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  margin-right: 12px;
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.user .icon .material-icons {
+  font-size: 32px;
+  color: rgba(0, 0, 0, .7);
+}
+
+.user h3 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.user h4 {
+  margin: 0 0 4px 0;
+  color: rgba(0, 0, 0, .54);
+  font-size: 14px;
+  font-weight: 500;
+}
