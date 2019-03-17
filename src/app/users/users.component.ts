@@ -29,6 +29,7 @@ export class UsersComponent implements OnInit {
       users => {
         const userId = this.authService.getUserTokenPayload().id;
         this.users = users.filter(user => user.id !== userId);
+        this.users.sort((a, b) => a.name > b.name ? 1 : -1); // sort users by name
       }
     );
   }
