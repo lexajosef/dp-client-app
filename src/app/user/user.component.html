@@ -1,3 +1,21 @@
-<p>
-  user works!
-</p>
+<div class="padding-container">
+  <h2 *ngIf="actUser">
+    Posts from {{actUser.name}}
+  </h2>
+
+  <div *ngIf="postsToView && postsToView.length > 0">
+    <ui-dropdown-menu title="Sort by date" icon="sort" btnStyleClass="btn btn-transparent">
+      <ui-menu-item (click)="orderUserPosts(true)" label="Modified (newest)"></ui-menu-item>
+      <ui-menu-item (click)="orderUserPosts(false)" label="Modified (oldest)"></ui-menu-item>
+    </ui-dropdown-menu>
+    <section class="cards" aria-labelledby="posts">
+      <ui-card *ngFor="let post of postsToView" [post]="post"></ui-card>
+      <div *ngIf="allUserPosts && postsToView && allUserPosts.length > postsToView.length" (click)="showMorePosts($event)" (keydown)="showMorePosts($event)"
+          class="card middle" tabindex="0" aria-label="Show more posts..." role="button">
+        <h3 class="showmore">Show more posts...</h3>
+      </div>
+    </section>
+  </div>
+
+  <div *ngIf="postsToView && postsToView.length === 0">No posts from this user yet.</div>
+</div>
