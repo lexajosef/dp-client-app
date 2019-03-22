@@ -18,6 +18,15 @@ export class PostsService {
     return this.http.post<Post>(`${this.apiUrl}/posts`, post);
   }
   
+  getAllWithoutUserId(withoutUserId: number, orderDesc: boolean): Observable<Post[]> {
+    let url = `${this.apiUrl}/posts?withoutUser=${withoutUserId}`;
+    if (orderDesc) {
+      url = `${url}&order=desc`;
+    }
+    
+    return this.http.get<Post[]>(url);
+  }
+
   getAllByUserId(userId: number, orderDesc: boolean): Observable<Post[]> {
     let url = `${this.apiUrl}/users/${userId}/posts`;
     if (orderDesc) {
@@ -35,6 +44,8 @@ export class PostsService {
 
     return this.http.get<Post[]>(url);
   }
+
+  
 
   getById(id: number): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/posts/${id}`);
