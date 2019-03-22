@@ -17,5 +17,5 @@
     </section>
   </div>
 
-  <div *ngIf="postsToView && postsToView.length === 0">No posts from this user yet.</div>
+  <span *ngIf="postsToView && postsToView.length === 0" class="no-posts">No posts from this user yet.</span>
 </div>
