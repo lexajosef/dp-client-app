@@ -27,6 +27,7 @@ import { DropdownMenuComponent } from './dropdown-menu/dropdown-menu.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { LoaderComponent } from './loader/loader.component';
 import { UserComponent } from './user/user.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UserComponent } from './user/user.component';
     DropdownMenuComponent,
     MenuItemComponent,
     LoaderComponent,
-    UserComponent
+    UserComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,

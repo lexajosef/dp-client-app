@@ -1,5 +1,8 @@
-<app-navigation *ngIf="isUserLoggedIn()"></app-navigation>
-<main [ngClass]="{ 'main-container--drawer-close': this.setDrawerCloseClass(), 'main-container': this.isUserLoggedIn() }" [attr.inert]="markMainAsInert() ? '' : null">
-  <app-loader></app-loader>
-  <router-outlet></router-outlet>
-</main>
+<div [attr.inert]="isConfirmVisible() ? '' : null">
+  <app-navigation *ngIf="isUserLoggedIn()"></app-navigation>
+  <main [ngClass]="{ 'main-container--drawer-close': this.setDrawerCloseClass(), 'main-container': this.isUserLoggedIn() }" [attr.inert]="markMainAsInert() ? '' : null">
+    <app-loader></app-loader>
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<app-confirm-modal></app-confirm-modal>

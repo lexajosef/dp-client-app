@@ -1,0 +1,15 @@
+<div #dialog class="dialog" role="dialog" aria-labelledby="title">
+  <div class="dialog-window">
+    <div class="dialog-header">
+      <h2 id="title">{{title}}</h2>
+    </div>
+    <div class="dialog-body">
+      <p>{{message}}</p>
+    </div>
+    <div class="dialog-footer">
+      <button #cancelBtn class="btn btn-transparent">{{cancelBtnText}}</button>
+      <button #confirmBtn class="btn btn-transparent">{{confirmBtnText}}</button>
+    </div>
+  </div>
+  <div class="dialog-mask"></div>
+</div>

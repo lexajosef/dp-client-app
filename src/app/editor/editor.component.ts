@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as KEYCODES from 'keycode-js';
+
+import { ConfirmModalService } from '../_services/confirm-modal.service';
 import { PostsService } from '../_services/posts.service';
 import { Post } from '../_models/post';
-import * as KEYCODES from 'keycode-js';
 
 @Component({
   selector: 'app-editor',
@@ -19,7 +21,8 @@ export class EditorComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private postsService: PostsService) { }
+    private postsService: PostsService,
+    private confirmService: ConfirmModalService) { }
 
   ngOnInit() {
     const params = this.route.snapshot.params;
@@ -234,10 +237,13 @@ export class EditorComponent implements OnInit {
   }
 
   deletePost() {
-    if (confirm("Are you sure to delete this post?")) {
-      this.postsService.delete(this.editedPost.id)
-        .subscribe(() => this.router.navigate(['/home']));
-    }
+    this.confirmService.activate('Delete post?', 'Are you sure you want to delete this post? This action cannot be undone!', 'Delete', 'Cancel')
+      .then(confirmed => {
+        if (confirmed) {
+          this.postsService.delete(this.editedPost.id)
+            .subscribe(() => this.router.navigate(['/home']));
+        }
+      });
   }
 
 }

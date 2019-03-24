@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from './_services/auth.service';
 import { NavigationUIService } from './_services/navigation-ui.service';
+import { ConfirmModalService } from './_services/confirm-modal.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private navigationUIService: NavigationUIService
+    private navigationUIService: NavigationUIService,
+    private confirmModalService: ConfirmModalService
   ) { }
 
   ngOnInit() { }
@@ -33,4 +35,9 @@ export class AppComponent implements OnInit {
   markMainAsInert(): boolean {
     return this.navigationUIService.getAsideNavVisible() && window.innerWidth < this.navigationUIService.widthLimit;
   }
+
+  isConfirmVisible(): boolean {
+    return this.confirmModalService.getConfirmVisible();
+  }
+
 }
