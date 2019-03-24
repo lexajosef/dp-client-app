@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import * as KEYCODES from 'keycode-js';
 
 import { ConfirmModalService } from '../_services/confirm-modal.service';
 
@@ -43,6 +44,7 @@ export class ConfirmModalComponent implements OnInit {
   private showModal() {
     this.confirmModalService.setConfirmVisible(true);
     this.dialogElement.classList.add('opened');
+    this.confirmBtnElement.focus();
   }
 
   private hideModal() {
@@ -51,16 +53,30 @@ export class ConfirmModalComponent implements OnInit {
   }
 
   private showConfirmModal(resolve: any) {
+    // remove all listneres from elements
+    this.cancelBtnElement.removeAllListeners('click');
+    this.dialogElement.removeAllListeners('keydown');
+    this.confirmBtnElement.removeAllListeners('click');
+
     this.showModal();
 
     // listen to cancel dialog
-    this.cancelBtn.nativeElement.addEventListener('click', () => {
+    this.cancelBtnElement.addEventListener('click', () => {
       this.hideModal();
       resolve(false);
     });
 
+    // listen to cancel dialog by ESC key
+    this.dialogElement.addEventListener('keydown', (ev: KeyboardEvent) => {
+      console.log('one');
+      if (ev.keyCode === KEYCODES.KEY_ESCAPE) {
+        this.hideModal();
+        resolve(false);
+      }
+    });
+
     // listen to confirm dialog
-    this.confirmBtn.nativeElement.addEventListener('click', () => {
+    this.confirmBtnElement.addEventListener('click', () => {
       this.hideModal();
       resolve(true);
     });

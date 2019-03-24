@@ -9,7 +9,7 @@
     <button class="btn btn-blue" id="btnSave" (click)="savePost(false)" disabled>
       <i class="material-icons" aria-hidden="true">sync</i>Save
     </button>
-    <button class="btn btn-danger" (click)="deletePost()">
+    <button #deleteBtn class="btn btn-danger" (click)="deletePost()">
       <i class="material-icons" aria-hidden="true">delete</i>Delete
     </button>
   </div>

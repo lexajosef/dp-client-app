@@ -15,6 +15,7 @@ export class EditorComponent implements OnInit {
 
   @ViewChild('editor') editor: ElementRef;
   @ViewChild('toolbar') toolbar: ElementRef;
+  @ViewChild('deleteBtn') deleteBtn: ElementRef;
 
   editedPost: Post;
 
@@ -39,6 +40,7 @@ export class EditorComponent implements OnInit {
 
   get editorDocument(): any { return (<any> this.editor.nativeElement).contentDocument }
   get toolbarElement(): HTMLElement { return this.toolbar.nativeElement }
+  get deleteBtnElement() { return this.deleteBtn.nativeElement }
 
   private loadPostForEdit(postId: number) {
     this.postsService.getById(postId).subscribe(
@@ -242,6 +244,9 @@ export class EditorComponent implements OnInit {
         if (confirmed) {
           this.postsService.delete(this.editedPost.id)
             .subscribe(() => this.router.navigate(['/home']));
+        } else {
+          // timeout add focus at the end of the execution queue
+          setTimeout(() => { this.deleteBtnElement.focus() });
         }
       });
   }
