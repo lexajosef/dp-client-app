@@ -88,6 +88,8 @@ export class NavigationComponent implements OnInit {
   onWindowResize() {
     if (window.innerWidth >= this.navigationUIService.widthLimit) {
       this.headerEl.removeAttribute('inert');
+    } else if (this.navigationUIService.getAsideNavVisible()) {
+      this.headerEl.setAttribute('inert', '');
     }
   }
 
