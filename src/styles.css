@@ -57,6 +57,12 @@ hr {
 .btn:disabled {
   cursor: default !important;
 }
+.btn:hover,
+.btn:active,
+.btn:focus {
+  cursor: pointer;
+}
+
 .btn.btn-primary {
   background-color: rgb(var(--main-color-rgb));
   color: rgb(255, 255, 255);
@@ -100,15 +106,12 @@ hr {
   margin-right: 4px;
 }
 
-.btn:hover,
-.btn:active,
-.btn:focus {
-  cursor: pointer;
-}
 .btn.btn-transparent {
-  padding: 0;
   background-color: transparent;
   color: rgb(var(--main-color-rgb));
+}
+.btn.btn-transparent.without-padding {
+  padding: 0;
 }
 .btn.btn-transparent:hover {
   background-color: rgba(var(--main-color-rgb), .05);
