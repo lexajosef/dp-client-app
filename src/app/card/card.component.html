@@ -1,4 +1,4 @@
-<div class="card" tabindex="0" [attr.aria-label]="post.title" (click)="redirectToPost($event, post.id)" 
+<div class="card clickable" tabindex="0" [attr.aria-label]="post.title" (click)="redirectToPost($event, post.id)" 
     (keydown)="redirectToPost($event, post.id)">
   <h4>{{post.userName}} - {{post.dateOfModification | date:'MMM d, yyyy, h:mm a'}}</h4>
   <h3>{{post.title}}</h3>

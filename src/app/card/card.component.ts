@@ -20,7 +20,8 @@ export class CardComponent implements OnInit {
 
   redirectToPost(event: any, postId: number) {
     // Note: KEYCODES.KEY_RETURN === ENTER key
-    if (event.type === 'click' || (event.type === 'keydown' && event.keyCode === KEYCODES.KEY_RETURN)) {
+    if (event.type === 'click' || (event.type === 'keydown' && event.target.classList.contains('clickable') 
+        && event.keyCode === KEYCODES.KEY_RETURN)) {
       if (event.ctrlKey) {
         window.open(`${window.location.origin}/post/${postId}`);
         return;
