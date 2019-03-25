@@ -1,6 +1,6 @@
 <div class="container">
   <div class="flex-item">
-    <h2>Editor component</h2>
+    <input [(ngModel)]="postTitle" class="editable-title" type="text" aria-label="Post title" placeholder="Post title">
   </div>
   <div class="flex-item posts-btns">
     <button class="btn btn-blue" id="btnSaveAndClose" (click)="savePost(true)" disabled>

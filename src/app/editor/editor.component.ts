@@ -18,6 +18,7 @@ export class EditorComponent implements OnInit {
   @ViewChild('deleteBtn') deleteBtn: ElementRef;
 
   editedPost: Post;
+  postTitle: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +47,7 @@ export class EditorComponent implements OnInit {
     this.postsService.getById(postId).subscribe(
       post => {
         this.editedPost = post;
+        this.postTitle = post.title;
         this.editorDocument.body.innerHTML = post.html;
         // TODO: set title of document
       },
@@ -203,7 +205,7 @@ export class EditorComponent implements OnInit {
 
   private createPost(closeAfterCreate: boolean) {
     this.postsService.create({
-      'title': 'test title',
+      'title': this.postTitle,
       'html': this.editorDocument.body.innerHTML
     })
       .subscribe(createdPost => {
@@ -215,7 +217,7 @@ export class EditorComponent implements OnInit {
   }
 
   private updatePost(closeAfterUpdate: boolean) {
-    this.editedPost.title = 'test title';
+    this.editedPost.title = this.postTitle;
     this.editedPost.html = this.editorDocument.body.innerHTML;
 
     this.postsService.update(this.editedPost)
