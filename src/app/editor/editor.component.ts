@@ -13,6 +13,8 @@ import { Post } from '../_models/post';
 })
 export class EditorComponent implements OnInit {
 
+  @ViewChild('btnSaveAndClose') btnSaveAndClose: ElementRef;
+  @ViewChild('btnSave') btnSave: ElementRef;
   @ViewChild('editor') editor: ElementRef;
   @ViewChild('toolbar') toolbar: ElementRef;
   @ViewChild('deleteBtn') deleteBtn: ElementRef;
@@ -41,7 +43,9 @@ export class EditorComponent implements OnInit {
 
   get editorDocument(): any { return (<any> this.editor.nativeElement).contentDocument }
   get toolbarElement(): HTMLElement { return this.toolbar.nativeElement }
-  get deleteBtnElement() { return this.deleteBtn.nativeElement }
+  get deleteBtnElement(): any { return this.deleteBtn.nativeElement }
+  get btnSaveAndCloseElement(): any { return this.btnSaveAndClose.nativeElement }
+  get btnSaveElement(): any { return this.btnSave.nativeElement }
 
   private loadPostForEdit(postId: number) {
     this.postsService.getById(postId).subscribe(
@@ -157,6 +161,20 @@ export class EditorComponent implements OnInit {
     }
   }
 
+  private setDisableSaveBtns(disabled: boolean) {
+    if (disabled) {
+      this.btnSaveAndCloseElement.setAttribute('disabled', '');
+      this.btnSaveElement.setAttribute('disabled', '');
+    } else {
+      this.btnSaveAndCloseElement.removeAttribute('disabled');
+      this.btnSaveElement.removeAttribute('disabled');
+    }
+  }
+
+  postTitleChange() {
+    this.setDisableSaveBtns(false);
+  }
+
   private onEditorKeyDown(event: KeyboardEvent) {
     if (event.altKey && event.shiftKey && event.keyCode === KEYCODES.KEY_T) {
       const forFocus: HTMLElement = document.querySelector('.editor-btns button');
@@ -166,8 +184,8 @@ export class EditorComponent implements OnInit {
 
       event.preventDefault();
     }
-    document.querySelector('#btnSaveAndClose').removeAttribute('disabled');
-    document.querySelector('#btnSave').removeAttribute('disabled');
+
+    this.setDisableSaveBtns(false);
   }
 
   private editorKeyboardOperability() {
@@ -236,8 +254,7 @@ export class EditorComponent implements OnInit {
       this.updatePost(closeAfterSave);
     }
 
-    document.querySelector('#btnSaveAndClose').setAttribute('disabled', '');
-    document.querySelector('#btnSave').setAttribute('disabled', '');
+    this.setDisableSaveBtns(true);
   }
 
   deletePost() {
