@@ -43,6 +43,11 @@ export class NavigationComponent implements OnInit {
     // inert of main container is set through navigationUIService in app.component.html
   }
 
+  private onMenuClose() {
+    this.navigationUIService.setAsideNavVisible(false);
+    this.setInertOnMenuClose();
+  }
+
   menuBtnClick() {
     this.navigationUIService.toggleAsideNavVisible();
 
@@ -68,9 +73,7 @@ export class NavigationComponent implements OnInit {
 
   onDrawerClick(event: any) {
     if (event.target === this.drawerEl) {
-      this.navigationUIService.setAsideNavVisible(false);
-      this.setInertOnMenuClose();
-
+      this.onMenuClose();
       document.body.classList.remove('drawer-scroll-lock');
     }
   }
@@ -78,10 +81,15 @@ export class NavigationComponent implements OnInit {
   onDrawerKeyDown(event: any) {
     // close drawer on ESC key on smaller window width
     if (event.keyCode === KEYCODES.KEY_ESCAPE && window.innerWidth < this.navigationUIService.widthLimit) {
-      this.navigationUIService.setAsideNavVisible(false);
-      this.setInertOnMenuClose();
-
+      this.onMenuClose();
       this.menuButtonEl.focus();
+    }
+  }
+
+  // for closing navigation after link click on mobile devices
+  routerLinkClick() {
+    if (window.innerWidth < this.navigationUIService.widthLimit) {
+      this.onMenuClose();
     }
   }
 
