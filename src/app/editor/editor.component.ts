@@ -185,7 +185,9 @@ export class EditorComponent implements OnInit {
       event.preventDefault();
     }
 
-    this.setDisableSaveBtns(false);
+    // here have to use document.querySelector, because its called from iframe
+    document.querySelector('#btnSaveAndClose').removeAttribute('disabled');
+    document.querySelector('#btnSave').removeAttribute('disabled');
   }
 
   private editorKeyboardOperability() {
