@@ -8,4 +8,7 @@
       <div #article></div>
     </div>
   </section>
+  <section class="flex-centering" aria-label="comments">
+    <app-comments *ngIf="post" [comments]="post.comments"></app-comments>
+  </section>
 </div>

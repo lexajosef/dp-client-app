@@ -1,3 +1,23 @@
-<p>
-  comments works!
-</p>
+<hr>
+
+<h3>Comments</h3>
+
+<div class="new-comment">
+  <input #newCommentText (input)="onTextChange()" (focus)="onCreateCommentFocus()" type="text" class="text-field" 
+      placeholder="Add new comment..." aria-label="Add new comment">
+  <div *ngIf="showCommentBtns" class="comment-btns">
+    <button (click)="hideCreateCommentBtns()" class="btn btn-transparent cancel">Cancel</button>
+    <button (click)="createComment()" class="btn btn-primary" [attr.disabled]="createCommentBtnDisabled ? '' : null">Comment</button>
+  </div>
+</div>
+
+<!-- TODO: create ngFor through all comment-->
+<div class="comment">
+  <div class="icon">
+    J <!--TODO: get first char form name to uppercase here-->
+  </div>
+  <div class="info">
+    <span class="name">Josef Lexa</span><span class="date">Mar 26, 2019, 1:15 PM</span><br>
+    <div class="text">In publishing and graphic design, lorem ipsum is common placeholder text used to demonstrate the graphic elements of a document or visual presentation.</div>
+  </div>
+</div>
