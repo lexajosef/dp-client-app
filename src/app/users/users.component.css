@@ -25,6 +25,11 @@
   background-color: rgba(0, 0, 0, .1);
   border-radius: 20px;
   box-sizing: border-box;
+  text-align: center;
+  line-height: 32px;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .7);
 }
 .user .icon .material-icons {
   font-size: 32px;

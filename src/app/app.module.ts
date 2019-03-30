@@ -29,6 +29,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { UserComponent } from './user/user.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { CommentsComponent } from './comments/comments.component';
+import { GetFirstUpperCharPipe } from './_pipes/get-first-upper-char.pipe';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CommentsComponent } from './comments/comments.component';
     LoaderComponent,
     UserComponent,
     ConfirmModalComponent,
-    CommentsComponent
+    CommentsComponent,
+    GetFirstUpperCharPipe
   ],
   imports: [
     BrowserModule,

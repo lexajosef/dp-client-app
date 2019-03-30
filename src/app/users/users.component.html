@@ -5,7 +5,7 @@
     <div *ngFor="let user of users" class="user" [attr.aria-label]="user.name" (click)="redirectToUser($event, user.id)" 
         (keydown)="redirectToUser($event, user.id)" tabindex="0">
       <div class="icon">
-        <i class="material-icons" aria-hidden="true">person</i>
+        {{user.name | getFirstUpperChar}}
       </div>
       <div class="info">
         <h3>{{user.name}}</h3>
