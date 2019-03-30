@@ -48,6 +48,10 @@ hr {
   font-weight: 600;
   margin-right: 8px;
 }
+.info .date {
+  font-size: 15px;
+  color: rgba(0, 0, 0, .7);
+}
 .info .text {
   margin-top: 6px;
 }

@@ -9,6 +9,6 @@
     </div>
   </section>
   <section class="flex-centering" aria-label="comments">
-    <app-comments *ngIf="post" [comments]="post.comments"></app-comments>
+    <app-comments *ngIf="post" [comments]="post.comments" [postId]="post.id"></app-comments>
   </section>
 </div>

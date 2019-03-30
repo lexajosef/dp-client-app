@@ -11,13 +11,14 @@
   </div>
 </div>
 
-<!-- TODO: create ngFor through all comment-->
-<div class="comment">
+<div *ngFor="let comment of comments" class="comment">
   <div class="icon">
-    J <!--TODO: get first char form name to uppercase here-->
+    {{comment.userName | getFirstUpperChar}}
   </div>
   <div class="info">
-    <span class="name">Josef Lexa</span><span class="date">Mar 26, 2019, 1:15 PM</span><br>
-    <div class="text">In publishing and graphic design, lorem ipsum is common placeholder text used to demonstrate the graphic elements of a document or visual presentation.</div>
+    <span class="name">{{comment.userName}}</span>
+    <span class="date">{{comment.dateOfCreation | date:'MMM d, yyyy, h:mm a'}}</span>
+    <br>
+    <div class="text">{{comment.text}}</div>
   </div>
 </div>

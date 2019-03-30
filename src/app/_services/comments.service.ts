@@ -15,12 +15,12 @@ export class CommentsService {
 
   constructor(private http: HttpClient) { }
 
-  create(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(`${this.apiUrl}/posts`, comment);
+  create(postId: number, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(`${this.apiUrl}/posts/${postId}/comments`, comment);
   }
 
-  delete(id: number): Observable<any> {
+  delete(commentId: number, postId: number): Observable<any> {
     // TODO: map catch errors and success string
-    return this.http.delete(`${this.apiUrl}/posts/${id}`);
+    return this.http.delete(`${this.apiUrl}/posts/${postId}/comments/${commentId}`);
   }
 }

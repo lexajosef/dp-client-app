@@ -11,6 +11,8 @@ import { CommentsService } from '../_services/comments.service';
 export class CommentsComponent implements OnInit {
 
   @Input('comments') comments: Comment[];
+  @Input('postId') postId: number;
+
   @ViewChild('newCommentText') newCommentText: ElementRef;
 
   showCommentBtns: boolean = false;
@@ -18,9 +20,7 @@ export class CommentsComponent implements OnInit {
 
   constructor(private commentsService: CommentsService) { }
 
-  ngOnInit() {
-    console.log(this.comments);
-  }
+  ngOnInit() { }
 
   onCreateCommentFocus() {
     this.showCommentBtns = true;
@@ -35,7 +35,8 @@ export class CommentsComponent implements OnInit {
   }
 
   createComment() {
-
+    this.commentsService.create(this.postId, { text: this.newCommentText.nativeElement.value })
+      .subscribe(comment => this.comments.unshift(comment));
   }
 
 }
