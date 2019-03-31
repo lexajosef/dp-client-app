@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Guards
 import { AuthGuard } from './_guards/auth.guard';
 import { LoggedGuard } from './_guards/logged.guard';
+import { UnsavedPostGuard } from './_guards/unsaved-post.guard';
 
 // Components
 import { LoginComponent } from './login/login.component';
@@ -21,8 +22,8 @@ const routes: Routes = [
   { path: 'login', canActivate: [LoggedGuard], component: LoginComponent },
   { path: 'registration', canActivate: [LoggedGuard], component: RegistrationComponent },
   { path: 'home', canActivate: [AuthGuard], component: HomeComponent },
-  { path: 'editor', canActivate: [AuthGuard], component: EditorComponent },
-  { path: 'editor/:postId', canActivate: [AuthGuard], component: EditorComponent },
+  { path: 'editor', canActivate: [AuthGuard], canDeactivate: [UnsavedPostGuard], component: EditorComponent },
+  { path: 'editor/:postId', canActivate: [AuthGuard], canDeactivate: [UnsavedPostGuard], component: EditorComponent },
   { path: 'help', canActivate: [AuthGuard], component: HelpComponent },
   { path: 'users', canActivate: [AuthGuard], component: UsersComponent },
   { path: 'posts', canActivate: [AuthGuard], component: PostsComponent },

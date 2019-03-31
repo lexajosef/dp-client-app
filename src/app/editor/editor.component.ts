@@ -272,4 +272,8 @@ export class EditorComponent implements OnInit {
       });
   }
 
+  canClosePost(): Promise<boolean> {
+    return this.confirmService.activate('Leave editor?', 'Are you sure you want to leave from editing of post? Your changes will be discarded!', 'Leave', 'Cancel');
+  }
+
 }
