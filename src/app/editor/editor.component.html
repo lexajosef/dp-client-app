@@ -13,28 +13,29 @@
       <i class="material-icons" aria-hidden="true">delete</i>Delete
     </button>
   </div>
-  <div #toolbar class="flex-item editor-btns">
+
+  <div #toolbar class="flex-item editor-btns" role="toolbar" aria-label="Text editing">
     <div class="btns-section">
-      <button (click)="doEditorCommand('undo')" class="icon-button">
-        <i class="material-icons">undo</i>
+      <button (click)="doEditorCommand('undo')" class="icon-button" title="Undo (Ctrl+Z)" aria-label="Undo (Ctrl+Z)">
+        <i class="material-icons" aria-hidden="true">undo</i>
       </button>
-      <button (click)="doEditorCommand('redo')" class="icon-button">
-        <i class="material-icons">redo</i>
+      <button (click)="doEditorCommand('redo')" class="icon-button" title="Undo (Ctrl+Y)" aria-label="Undo (Ctrl+Y)">
+        <i class="material-icons" aria-hidden="true">redo</i>
       </button>
     </div>
     <div class="btns-section">
-      <button (click)="doEditorCommand('bold')" class="icon-button">
-        <i class="material-icons">format_bold</i>
+      <button (click)="doEditorCommand('bold')" class="icon-button" title="Bold (Ctrl+B)" aria-label="Bold (Ctrl+B)">
+        <i class="material-icons" aria-hidden="true">format_bold</i>
       </button>
-      <button (click)="doEditorCommand('italic')" class="icon-button">
-        <i class="material-icons">format_italic</i>
+      <button (click)="doEditorCommand('italic')" class="icon-button" title="Italic (Ctrl+I)" aria-label="Italic (Ctrl+I)">
+        <i class="material-icons" aria-hidden="true">format_italic</i>
       </button>
-      <button (click)="doEditorCommand('underline')" class="icon-button">
-        <i class="material-icons">format_underlined</i>
+      <button (click)="doEditorCommand('underline')" class="icon-button" title="Underline (Ctrl+U)" aria-label="Underline (Ctrl+U)">
+        <i class="material-icons" aria-hidden="true">format_underlined</i>
       </button>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('fontName', $event.target.value)" class="text-field in-wysiwyg" aria-label="Font selection">
+      <select (change)="doEditorCommand('fontName', $event.target.value)" class="text-field in-wysiwyg" title="Font selection" aria-label="Font selection">
         <option value="Arial">Arial</option>
         <option value="Comic Sans MS">Comic Sans MS</option>
         <option value="Courier">Courier</option>
@@ -45,7 +46,7 @@
       </select>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('formatBlock', $event.target.value)" class="text-field in-wysiwyg" aria-label="Paragraph style selection">
+      <select (change)="doEditorCommand('formatBlock', $event.target.value)" class="text-field in-wysiwyg" title="Paragraph style selection" aria-label="Paragraph style selection">
         <option value="<h1>">Heading 1</option>
         <option value="<h2>">Heading 2</option>
         <option value="<h3>">Heading 3</option>
@@ -53,7 +54,7 @@
       </select>
     </div>
     <div class="btns-section">
-      <select (change)="doEditorCommand('fontSize', $event.target.value)" class="text-field in-wysiwyg" style="width:64px;" aria-label="Font size selection">
+      <select (change)="doEditorCommand('fontSize', $event.target.value)" class="text-field in-wysiwyg" style="width:64px;" title="Font size selection" aria-label="Font size selection">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -64,33 +65,34 @@
       </select>
     </div>
     <div class="btns-section">
-      <button (click)="doEditorCommand('justifyLeft')" class="icon-button">
-          <i class="material-icons">format_align_left</i>
+      <button (click)="doEditorCommand('justifyLeft')" class="icon-button" title="Format align left (Ctrl+Shift+L)" aria-label="Format align left (Ctrl+Shift+L)">
+          <i class="material-icons" aria-hidden="true">format_align_left</i>
       </button>
-      <button (click)="doEditorCommand('justifyRight')" class="icon-button">
-        <i class="material-icons">format_align_right</i>
+      <button (click)="doEditorCommand('justifyRight')" class="icon-button" title="Format align right (Ctrl+Shift+R)" aria-label="Format align right (Ctrl+Shift+R)">
+        <i class="material-icons" aria-hidden="true">format_align_right</i>
       </button>
-      <button (click)="doEditorCommand('justifyCenter')" class="icon-button">
-        <i class="material-icons">format_align_center</i>
+      <button (click)="doEditorCommand('justifyCenter')" class="icon-button" title="Format align center (Ctrl+Shift+E)" aria-label="Format align center (Ctrl+Shift+E)">
+        <i class="material-icons" aria-hidden="true">format_align_center</i>
       </button>
-      <button (click)="doEditorCommand('justifyFull')" class="icon-button">
-        <i class="material-icons">format_align_justify</i>
-      </button>
-    </div>
-    <div class="btns-section">
-      <button (click)="doEditorCommand('insertUnorderedList')" class="icon-button">
-        <i class="material-icons">format_list_bulleted</i>
-      </button>
-      <button (click)="doEditorCommand('insertOrderedList')" class="icon-button">
-        <i class="material-icons">format_list_numbered</i>
+      <button (click)="doEditorCommand('justifyFull')" class="icon-button" title="Format align justify (Ctrl+Shift+J)" aria-label="Format align justify (Ctrl+Shift+J)">
+        <i class="material-icons" aria-hidden="true">format_align_justify</i>
       </button>
     </div>
     <div class="btns-section">
-      <button (click)="createLinkCommand()" class="icon-button">
-        <i class="material-icons">insert_link</i>
+      <button (click)="doEditorCommand('insertUnorderedList')" class="icon-button" title="Insert unordered list" aria-label="Insert unordered list">
+        <i class="material-icons" aria-hidden="true">format_list_bulleted</i>
+      </button>
+      <button (click)="doEditorCommand('insertOrderedList')" class="icon-button" title="Insert numbered list" aria-label="Insert numbered list">
+        <i class="material-icons" aria-hidden="true">format_list_numbered</i>
+      </button>
+    </div>
+    <div class="btns-section">
+      <button (click)="createLinkCommand()" class="icon-button" title="Insert external link" aria-label="Insert external link">
+        <i class="material-icons" aria-hidden="true">insert_link</i>
       </button>
     </div>
   </div>
+
   <div class="flex-item with-editor">
     <iframe #editor name="richTextEditor" id="richTextEditor" title="Editor window"></iframe>
   </div>

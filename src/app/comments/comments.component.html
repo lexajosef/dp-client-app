@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div *ngFor="let comment of comments" class="comment">
+<article *ngFor="let comment of comments" class="comment">
   <div class="icon">
     {{comment.userName | getFirstUpperChar}}
   </div>
@@ -21,4 +21,4 @@
     <br>
     <div class="text">{{comment.text}}</div>
   </div>
-</div>
+</article>

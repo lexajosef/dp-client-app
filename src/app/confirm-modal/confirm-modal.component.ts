@@ -68,7 +68,6 @@ export class ConfirmModalComponent implements OnInit {
 
     // listen to cancel dialog by ESC key
     this.dialogElement.addEventListener('keydown', (ev: KeyboardEvent) => {
-      console.log('one');
       if (ev.keyCode === KEYCODES.KEY_ESCAPE) {
         this.hideModal();
         resolve(false);

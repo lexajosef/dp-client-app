@@ -1,10 +1,10 @@
-<header #header (window:resize)="onWindowResize()" class="top-app-bar">
+<header #header (window:resize)="onWindowResize()" class="top-app-bar" role="banner">
   <div class="top-app-bar--row">
-    <section class="top-app-bar--section">
-      <button #menuButton (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon" aria-label="menu">menu</button>
+    <section class="top-app-bar--section" role="region">
+      <button #menuButton (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon" aria-label="open main navigation">menu</button>
       <div class="top-app-bar--title"><i class="material-icons" aria-hidden="true">accessibility_new</i>DP A11Y Client</div>
     </section>
-    <section class="top-app-bar--section align-right">
+    <section class="top-app-bar--section align-right" role="region">
       <ui-dropdown-menu icon="person_outline" aria-label="logout" btnStyleClass="top-app-bar--navigation-icon" menuPosition="right">
         <ui-menu-item (click)="logout()" label="Logout"></ui-menu-item>
       </ui-dropdown-menu>
@@ -12,8 +12,9 @@
   </div>  
 </header>
 
-<aside #drawer (click)="onDrawerClick($event)" (keydown)="onDrawerKeyDown($event)" class="drawer" [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
-  <nav class="drawer--drawer">
+<aside #drawer (click)="onDrawerClick($event)" (keydown)="onDrawerKeyDown($event)" class="drawer" role="complementary" 
+    [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
+  <nav class="drawer--drawer" role="navigation">
     <div class="list">
       <a (click)="routerLinkClick()" class="list-item" routerLink="/home" routerLinkActive="list-item--activated">
         <i class="material-icons list-item--graphic" aria-hidden="true">home</i>Home

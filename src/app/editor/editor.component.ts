@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as KEYCODES from 'keycode-js';
 
@@ -11,7 +11,7 @@ import { Post } from '../_models/post';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements AfterViewChecked {
 
   @ViewChild('btnSaveAndClose') btnSaveAndClose: ElementRef;
   @ViewChild('btnSave') btnSave: ElementRef;
@@ -28,7 +28,7 @@ export class EditorComponent implements OnInit {
     private postsService: PostsService,
     private confirmService: ConfirmModalService) { }
 
-  ngOnInit() {
+  ngAfterViewChecked() {
     const params = this.route.snapshot.params;
 
     this.editorDocument.designMode = 'on';
@@ -56,7 +56,7 @@ export class EditorComponent implements OnInit {
         // TODO: set title of document
       },
       error => { 
-        alert(error); // TODO: call this through alert component
+        alert(error);
         this.router.navigate(['/home']);
       }
     );
@@ -94,6 +94,31 @@ export class EditorComponent implements OnInit {
 
   private focusEditor(): void {
     this.editorDocument.body.focus();
+  }
+
+  private editorShortcuts(event: KeyboardEvent) {
+    switch (event.keyCode) {
+      // align paragraph left
+      case KEYCODES.KEY_L:
+        this.doEditorCommand('justifyLeft');
+        event.preventDefault();
+        break;
+      // align paragraph right
+      case KEYCODES.KEY_R:
+        this.doEditorCommand('justifyRight');
+        event.preventDefault();
+        break;
+      // align paragraph center
+      case KEYCODES.KEY_E:
+        this.doEditorCommand('justifyCenter');
+        event.preventDefault();
+        break;
+      // align paragraph justify
+      case KEYCODES.KEY_J:
+        this.doEditorCommand('justifyFull');
+        event.preventDefault();
+        break;
+    }
   }
 
   private navigationShortcuts(keyCode: number) {
@@ -154,7 +179,9 @@ export class EditorComponent implements OnInit {
 
   @HostListener('document:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    if (event.altKey && event.shiftKey) {
+    if (event.ctrlKey && event.shiftKey) {
+      this.editorShortcuts(event);
+    } else if (event.altKey && event.shiftKey) {
       this.navigationShortcuts(event.keyCode);
     } else if (this.toolbarElement.querySelector(':focus')) {
       this.toolbarNavigation(event);
@@ -183,6 +210,33 @@ export class EditorComponent implements OnInit {
       }
 
       event.preventDefault();
+    }
+
+    if (event.ctrlKey && event.shiftKey) {
+      let iframeDocument = (<any>document.querySelector('#richTextEditor')).contentDocument;
+
+      switch (event.keyCode) {
+        // align paragraph left
+        case KEYCODES.KEY_L:
+          iframeDocument.execCommand('justifyLeft', false, null);
+          event.preventDefault();
+          break;
+        // align paragraph right
+        case KEYCODES.KEY_R:
+        iframeDocument.execCommand('justifyRight', false, null);
+          event.preventDefault();
+          break;
+        // align paragraph center
+        case KEYCODES.KEY_E:
+          iframeDocument.execCommand('justifyCenter', false, null);
+          event.preventDefault();
+          break;
+        // align paragraph justify
+        case KEYCODES.KEY_J:
+          iframeDocument.execCommand('justifyFull', false, null);
+          event.preventDefault();
+          break;
+      }
     }
 
     // here have to use document.querySelector, because its called from iframe
