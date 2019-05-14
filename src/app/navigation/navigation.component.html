@@ -1,11 +1,11 @@
 <header #header (window:resize)="onWindowResize()" class="top-app-bar" role="banner">
   <div class="top-app-bar--row">
-    <section class="top-app-bar--section" role="region">
+    <section class="top-app-bar--section">
       <button #menuButton (click)="menuBtnClick()" class="menu material-icons top-app-bar--navigation-icon" aria-label="open main navigation">menu</button>
       <div class="top-app-bar--title"><i class="material-icons" aria-hidden="true">accessibility_new</i>DP A11Y Client</div>
     </section>
-    <section class="top-app-bar--section align-right" role="region">
-      <ui-dropdown-menu icon="person_outline" aria-label="logout" btnStyleClass="top-app-bar--navigation-icon" menuPosition="right">
+    <section class="top-app-bar--section align-right">
+      <ui-dropdown-menu #userDropdown icon="person_outline" aria-label="logout" btnStyleClass="top-app-bar--navigation-icon" menuPosition="right">
         <ui-menu-item (click)="logout()" label="Logout"></ui-menu-item>
       </ui-dropdown-menu>
     </section>

@@ -5,13 +5,14 @@ import * as KEYCODES from 'keycode-js';
 import { ConfirmModalService } from '../_services/confirm-modal.service';
 import { PostsService } from '../_services/posts.service';
 import { Post } from '../_models/post';
+import { resolve } from 'dns';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements AfterViewChecked {
+export class EditorComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('btnSaveAndClose') btnSaveAndClose: ElementRef;
   @ViewChild('btnSave') btnSave: ElementRef;
@@ -28,17 +29,19 @@ export class EditorComponent implements AfterViewChecked {
     private postsService: PostsService,
     private confirmService: ConfirmModalService) { }
 
-  ngAfterViewChecked() {
+  ngOnInit(): void {
     const params = this.route.snapshot.params;
-
-    this.editorDocument.designMode = 'on';
-    this.addStylesToEditor();
-    this.focusEditor();
-    this.editorKeyboardOperability();
 
     if (params.postId) {
       this.loadPostForEdit(params.postId);
     }
+  }
+
+  ngAfterViewChecked() {
+    this.editorDocument.designMode = 'on';
+    this.addStylesToEditor();
+    this.focusEditor();
+    this.editorKeyboardOperability();
   }
 
   get editorDocument(): any { return (<any> this.editor.nativeElement).contentDocument }
@@ -198,6 +201,10 @@ export class EditorComponent implements AfterViewChecked {
     }
   }
 
+  private hasEditorHasChanges(): boolean {
+    return !this.btnSaveElement.hasAttribute('disabled');
+  }
+
   postTitleChange() {
     this.setDisableSaveBtns(false);
   }
@@ -327,7 +334,12 @@ export class EditorComponent implements AfterViewChecked {
   }
 
   canClosePost(): Promise<boolean> {
-    return this.confirmService.activate('Leave editor?', 'Are you sure you want to leave from editing of post? Your changes will be discarded!', 'Leave', 'Cancel');
+    // confirm closing if editor has changes
+    if (this.hasEditorHasChanges()) {
+      return this.confirmService.activate('Leave editor?', 'Are you sure you want to leave from editing of post? Your changes will be discarded!', 'Leave', 'Cancel');
+    } else {
+      return Promise.resolve(true);
+    }
   }
 
 }
