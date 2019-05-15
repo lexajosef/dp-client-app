@@ -26,8 +26,11 @@
 
 .flex-item.editor-btns {
   display: flex;
+  overflow-x: auto;
   padding: 8px 16px;
   background-color: rgba(0, 0, 0, .03);
+  white-space: nowrap;
+  user-select: none;
 }
 .btns-section {
   height: 36px;
@@ -60,6 +63,19 @@ iframe {
   padding: 32px;
   margin: 16px;
   background-color: rgb(255, 255, 255);
+}
+
+@media only screen and (max-width: 600px) {
+  iframe {
+    width: 100%;
+    padding: 16px;
+    margin: 0;
+    box-shadow: unset;
+  }
+
+  .flex-item.with-editor {
+    padding: 0;
+  }
 }
 
 .icon-button {
@@ -120,4 +136,19 @@ iframe {
 
 .posts-btns .btn {
   margin-right: 8px;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  cursor: pointer !important;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #AAA;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }

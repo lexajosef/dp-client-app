@@ -1,18 +1,17 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as KEYCODES from 'keycode-js';
 
 import { ConfirmModalService } from '../_services/confirm-modal.service';
 import { PostsService } from '../_services/posts.service';
 import { Post } from '../_models/post';
-import { resolve } from 'dns';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements OnInit, AfterViewChecked {
+export class EditorComponent implements OnInit {
 
   @ViewChild('btnSaveAndClose') btnSaveAndClose: ElementRef;
   @ViewChild('btnSave') btnSave: ElementRef;
@@ -31,17 +30,17 @@ export class EditorComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     const params = this.route.snapshot.params;
-
+    
+    setTimeout(() => {
+      this.addStylesToEditor();
+      this.editorKeyboardOperability();
+      this.editorDocument.designMode = 'on';
+      this.focusEditor();
+    }, 1);
+    
     if (params.postId) {
       this.loadPostForEdit(params.postId);
     }
-  }
-
-  ngAfterViewChecked() {
-    this.editorDocument.designMode = 'on';
-    this.addStylesToEditor();
-    this.focusEditor();
-    this.editorKeyboardOperability();
   }
 
   get editorDocument(): any { return (<any> this.editor.nativeElement).contentDocument }
