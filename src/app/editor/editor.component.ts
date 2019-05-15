@@ -55,7 +55,6 @@ export class EditorComponent implements OnInit {
         this.editedPost = post;
         this.postTitle = post.title;
         this.editorDocument.body.innerHTML = post.html;
-        // TODO: set title of document
       },
       error => { 
         alert(error);

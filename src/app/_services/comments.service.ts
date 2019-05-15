@@ -20,7 +20,6 @@ export class CommentsService {
   }
 
   delete(commentId: number, postId: number): Observable<any> {
-    // TODO: map catch errors and success string
     return this.http.delete(`${this.apiUrl}/posts/${postId}/comments/${commentId}`);
   }
 }
