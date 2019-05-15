@@ -15,18 +15,18 @@
 <aside #drawer (click)="onDrawerClick($event)" (keydown)="onDrawerKeyDown($event)" class="drawer" role="complementary" 
     [ngClass]="{ 'drawer--open': this.navigationUIService.getAsideNavVisible() }">
   <nav class="drawer--drawer" role="navigation">
-    <div class="list">
-      <a (click)="routerLinkClick()" class="list-item" routerLink="/home" routerLinkActive="list-item--activated">
+    <div class="list" role="list">
+      <a (click)="routerLinkClick()" class="list-item" routerLink="/home" routerLinkActive="list-item--activated" role="listitem">
         <i class="material-icons list-item--graphic" aria-hidden="true">home</i>Home
       </a>
-      <a (click)="routerLinkClick()" class="list-item" routerLink="/users" routerLinkActive="list-item--activated">
+      <a (click)="routerLinkClick()" class="list-item" routerLink="/users" routerLinkActive="list-item--activated" role="listitem">
         <i class="material-icons list-item--graphic" aria-hidden="true">people</i>Users
       </a>
-      <a (click)="routerLinkClick()" class="list-item" routerLink="/posts" routerLinkActive="list-item--activated">
+      <a (click)="routerLinkClick()" class="list-item" routerLink="/posts" routerLinkActive="list-item--activated" role="listitem">
         <i class="material-icons list-item--graphic" aria-hidden="true">flip_to_front</i>Posts
       </a>
       <hr>
-      <a (click)="routerLinkClick()" class="list-item" routerLink="/help" routerLinkActive="list-item--activated">
+      <a (click)="routerLinkClick()" class="list-item" routerLink="/help" routerLinkActive="list-item--activated" role="listitem">
         <i class="material-icons list-item--graphic" aria-hidden="true">help</i>Help
       </a>
     </div>
