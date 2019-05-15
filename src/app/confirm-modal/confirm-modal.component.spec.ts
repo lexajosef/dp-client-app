@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import * as axe from 'axe-core';
 
 import { ConfirmModalComponent } from './confirm-modal.component';
 
-describe('ConfirmModalComponent', () => {
+fdescribe('ConfirmModalComponent', () => {
   let component: ConfirmModalComponent;
   let fixture: ComponentFixture<ConfirmModalComponent>;
 
@@ -21,5 +22,14 @@ describe('ConfirmModalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have no a11y violations', () => {
+    let context = { include: ['div.dialog'] };
+
+    axe.run(context, (err, results) => {
+      if (err) console.log(err);
+      expect(results.violations.length).toBe(0);
+    });
   });
 });
